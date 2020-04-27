@@ -1,26 +1,74 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import LoginPage from './modules/Login/containers/LoginContainer'
+import { PersonalAreaPage } from './modules/PersonalArea/containers/PersonalAreaPage'
+import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { useSelector, shallowEqual} from 'react-redux';
+import { isLoginSuccess, isLoginLoader } from './modules/Login/selectors/loginSelectors'
 
 function App() {
+  const token = localStorage.getItem('token');
+  const isLoader = useSelector(isLoginLoader, shallowEqual);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <PrivateRouteLogin path='/login' >
+            <LoginPage/>
+          </PrivateRouteLogin>
+          <PrivateRoute path='/main' >
+            <PersonalAreaPage/>
+          </PrivateRoute>
+          {token && <Redirect from="*" to="/main"/>} 
+          {!token && <Redirect from="*" to="/login"/>}
+        </Switch>
+      </Router>
     </div>
   );
 }
 
+const PrivateRoute = ({ children, ...rest }) => {
+  const isAuth = useSelector(isLoginSuccess, shallowEqual);
+  const isLoader = useSelector(isLoginLoader, shallowEqual);
+  const token = localStorage.getItem('token');
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        if (token || isAuth) 
+          return children
+        else {
+          return <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        }
+      }
+    }
+    />
+  );
+}
+const PrivateRouteLogin = ({ children, ...rest }) => {
+  const token = localStorage.getItem('token');
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        if (!token) 
+          return children
+        else {
+          return <Redirect
+            to={{
+              pathname: "/main",
+              state: { from: location }
+            }}
+          />
+        }
+      }
+    }
+    />
+  );
+}
 export default App;
