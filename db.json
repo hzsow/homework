@@ -18,7 +18,7 @@
   "accounts": [
     {
       "userId": "1",
-      "account_balance": 2219,
+      "account_balance": 2834,
       "account_number": 4060465160,
       "id": 4060465160
     },
@@ -30,7 +30,7 @@
     },
     {
       "userId": "1",
-      "account_balance": 0,
+      "account_balance": 1357.25,
       "account_number": 4541103979,
       "id": 4541103979
     }

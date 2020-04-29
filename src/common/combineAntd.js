@@ -8,12 +8,12 @@ const { RangePicker } = DatePicker;
 
 const formItemLayout = {
   labelCol: {
-    xs: { span: 24 },
-    sm: { span: 16 }
+    xs: { span: 240 },
+    sm: { span: 160 }
   },
   wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 114 }
+    xs: { span: 160 },
+    md: { span: 160 }
   }
 };
 
@@ -31,7 +31,7 @@ export const tailFormItemLayout = {
 };
 export const FormItemItemLayout = ({...props}) => {
   return (
-    <FormItem {...formItemLayout} {...props}/>
+    <FormItem {...formItemLayout}{...props} />
   )
 }
 
@@ -39,6 +39,7 @@ const makeField = Component => ({ input, meta, children, hasFeedback, label, ...
   const hasError = meta.touched && meta.invalid;
   return (
     <FormItemItemLayout
+      rules={[{ required: true }]}
       label={label}
       validateStatus={hasError ? "error" : "success"}
       hasFeedback={hasFeedback && hasError}

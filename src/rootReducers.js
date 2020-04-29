@@ -12,8 +12,10 @@ import transferAccountReducer from './modules/PersonalArea/reducers/transferAcco
 import changeUserPasswordReducer from './modules/PersonalArea/reducers/changeUserPasswordReducer';
 import changeUserProfileReducer from './modules/PersonalArea/reducers/changeUserProfileReducer';
 import deleteUserProfileReducer from './modules/PersonalArea/reducers/deleteUserProfileReducer';
+import paymentAccountReducer from './modules/PersonalArea/reducers/paymentAccountReducer';
 
 export const reducers = combineReducers({
+    paymentAccount: paymentAccountReducer,
     deleteUserProfile: deleteUserProfileReducer,
     changeUserProfile: changeUserProfileReducer,
     changeUserPassword: changeUserPasswordReducer,

@@ -38,7 +38,11 @@ export const CHANGE_USER_PROFILE_MODAL_HIDE = 'CHANGE_USER_PROFILE_MODAL_HIDE';
 export const DELETE_USER_PROFILE_LOADER = 'DELETE_USER_PROFILE_LOADER';
 export const DELETE_USER_PROFILE_SUCCESS = 'DELETE_USER_PROFILE_SUCCESS';
 export const DELETE_USER_PROFILE_ERROR = 'DELETE_USER_PROFILE_ERROR';
-
+export const PAYMENT_ACCOUNT_LOADER = 'PAYMENT_ACCOUNT_LOADER';
+export const PAYMENT_ACCOUNT_SUCCESS = 'PAYMENT_ACCOUNT_SUCCESS';
+export const PAYMENT_ACCOUNT_ERROR = 'PAYMENT_ACCOUNT_ERROR';
+export const PAYMENT_ACCOUNT_MODAL_SHOW = 'PAYMENT_ACCOUNT_MODAL_SHOW';
+export const PAYMENT_ACCOUNT_MODAL_HIDE = 'PAYMENT_ACCOUNT_MODAL_HIDE';
 
 export const isAccountsListLoader = () => {
   return {
@@ -260,5 +264,31 @@ export const deleteUserProfileSuccess = () => {
 export const deleteUserProfileError = () => {
   return {
     type: DELETE_USER_PROFILE_ERROR
+  }
+}
+export const paymentAccountLoader = ({payload}) => {
+  return {
+    type: PAYMENT_ACCOUNT_LOADER,
+    payload
+  }
+}
+export const paymentAccountSuccess = () => {
+  return {
+    type: PAYMENT_ACCOUNT_SUCCESS
+  }
+}
+export const paymentAccountError = () => {
+  return {
+    type: PAYMENT_ACCOUNT_ERROR
+  }
+}
+export const paymentAccountModalHide = () => {
+  return {
+    type: PAYMENT_ACCOUNT_MODAL_HIDE
+  }
+}
+export const paymentAccountModalShow = () => {
+  return {
+    type: PAYMENT_ACCOUNT_MODAL_SHOW
   }
 }

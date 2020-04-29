@@ -1,23 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ReplenishForm from './ReplenishForm';
 import {Button, Modal } from 'antd';
-import {formValueSelector, currentAccountValueSelector, replenishAccountLoaderSelector, replenishAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
+import {currentAccountValueSelector, replenishAccountLoaderSelector, replenishAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
 import { replenishAccountLoader, replenishModalHide, replenishModalShow } from '../../../actions/';
+import {reset} from 'redux-form';
 
 export const ReplenishAccountButton = (props) => {
     const { balance, uuid } = props;
     const dispatch = useDispatch();
-    const replenishValue = useSelector(formValueSelector);
     const visible = useSelector(replenishAccountModalShow);
     const id = useSelector(currentAccountValueSelector);
     const loader = useSelector(replenishAccountLoaderSelector);
-    const handleOk = () => {
-        const values = replenishValue.replenish.values;
-        if (values){
-            const newBalance = parseFloat(values.replenishField)+parseFloat(balance);
-            dispatch(replenishAccountLoader({newBalance, value: values.replenishField, id, uuid}));
-        }
+    const handleOk = (values) => {
+        const newBalance = parseFloat(values.replenishField)+parseFloat(balance);
+        dispatch(replenishAccountLoader({newBalance, value: values.replenishField, id, uuid}));
+        dispatch(reset('replenishForm'));
     }
     const handleCancel = () => {
         dispatch(replenishModalHide());
@@ -32,15 +30,9 @@ export const ReplenishAccountButton = (props) => {
                 title="На какую сумму вы хотите пополнить этот счет?"
                 onCancel={handleCancel}
                 footer={[
-                    <Button key="back" onClick={handleCancel}>
-                    Отмена
-                    </Button>,
-                    <Button key="submit" type="button" loading={loader} onClick={handleOk}>
-                    Пополнить
-                    </Button>,
                 ]}
                 >
-                <ReplenishForm/>
+                <ReplenishForm onSubmit={handleOk} loader={loader}/>
             </Modal>
         </div>
 } 

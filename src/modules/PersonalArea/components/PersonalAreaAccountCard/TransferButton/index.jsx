@@ -2,19 +2,17 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import TransferForm from './TransferForm';
 import {Button, Modal } from 'antd';
-import { formValueSelector, transferAccountLoaderSelector, transferAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
+import { transferAccountLoaderSelector, transferAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
 import { transferModalHide, transferModalShow, transferAccountLoader } from '../../../actions/';
+import {reset} from 'redux-form';
 
 export const TransferButton = () => {
     const dispatch = useDispatch();
     const visible = useSelector(transferAccountModalShow);
     const loader = useSelector(transferAccountLoaderSelector);
-    const form = useSelector(formValueSelector);
-    const handleOk = () => {
-        const values = form.transfer.values;
-        if(values){
-            dispatch(transferAccountLoader({value: values.accountValueField, account_number: values.accountNumberField.replace(/\s/g, '')}));
-        }
+    const handleOk = (values) => {
+        dispatch(transferAccountLoader({value: values.accountValueField, account_number: values.accountNumberField.replace(/\s/g, '')}));
+        dispatch(reset('transferForm'));
     }
     const handleCancel = () => {
         dispatch(transferModalHide());
@@ -27,16 +25,11 @@ export const TransferButton = () => {
             <Modal
                 visible={visible}
                 title="Перевод"
+                onCancel={handleCancel}
                 footer={[
-                    <Button key="back" onClick={handleCancel}>
-                    Отмена
-                    </Button>,
-                    <Button key="submit" type="button" loading={loader} onClick={handleOk}>
-                    Совершить перевод
-                    </Button>,
                 ]}
                 >
-                <TransferForm/>
+                <TransferForm loader={loader} onSubmit={handleOk}/>
             </Modal>
         </div>
 } 

@@ -9,10 +9,12 @@ import transferAccountSagas from './modules/PersonalArea/sagas/transferAccountSa
 import changeUserProfileSagas from './modules/PersonalArea/sagas/changeUserProfileSagas';
 import changeUserPasswordSagas from './modules/PersonalArea/sagas/changeUserPasswordSagas';
 import deleteUserProfileSagas from './modules/PersonalArea/sagas/deleteUserProfileSagas';
+import paymentAccountSagas from './modules/PersonalArea/sagas/paymentAccountSagas';
 import {all} from 'redux-saga/effects';
 
 export default function* rootSagas () {
   yield all([
+    paymentAccountSagas(),
     deleteUserProfileSagas(),
     changeUserProfileSagas(),
     changeUserPasswordSagas(),

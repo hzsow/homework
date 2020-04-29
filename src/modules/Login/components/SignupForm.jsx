@@ -7,11 +7,12 @@ import PropTypes from 'prop-types';
 import { RollbackOutlined } from '@ant-design/icons';
 
 
-export const SignupForm = React.memo((props) => {
-    const { handleSubmit, pristine, submitting, setSubmit, backButton} = props;
-
+const SignupForm = React.memo((props) => {
+    const { handleSubmit, pristine, submitting, backButton} = props;
+    console.log(props);
+    
     return (
-        <form onSubmit={handleSubmit(setSubmit)}>
+        <form onSubmit={handleSubmit}>
             <FormItemItemLayout>
                 <Button type="button" htmlType="button" onClick={backButton} icon={<RollbackOutlined />}/>
             </FormItemItemLayout>

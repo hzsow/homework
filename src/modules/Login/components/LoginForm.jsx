@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 
 
 const LoginForm = React.memo((props) => {
-  const { handleSubmit, pristine, submitting, setSubmit, showSignUp} = props;
+  const { handleSubmit, pristine, submitting, showSignUp} = props;
 
   return (
-    <form onSubmit={handleSubmit(setSubmit)}>
+    <form onSubmit={handleSubmit}>
       <Field label="" name="Email" validate={[email, required]} component={AInput} placeholder="Email" hasFeedback/>
       <Field label="" name="Password" validate={[required]} component={AInputPassword} placeholder="Пароль" hasFeedback/>
       <FormItemItemLayout>

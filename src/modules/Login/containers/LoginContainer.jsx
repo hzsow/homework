@@ -27,8 +27,8 @@ export default React.memo(() => {
     }
     return (
         <div className="LoginPage">
-            {(!isSignUpShow) && <LoginForm showSignUp={showSignUp} setSubmit={loginSubmit}/>} 
-            {(isSignUpShow) && <SignupForm setSubmit={signUpSubmit} backButton={backButton}/>} 
+            {(!isSignUpShow) && <LoginForm showSignUp={showSignUp} onSubmit={loginSubmit}/>} 
+            {(isSignUpShow) && <SignupForm backButton={backButton} onSubmit={signUpSubmit}/>} 
         </div>  
     )
 })

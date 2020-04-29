@@ -4,7 +4,7 @@ import { Typography, Layout, Button, Space, Modal, Skeleton } from 'antd';
 import { currentAccountLoader, accountsList } from '../../selectors/PersonalAreaSelectors'
 import {DeleteAccountButton} from './DeleteAccountButton';
 import {CreateTemplateButton} from './CreateTemplateButton';
-import {PaymentButton} from './PaymentButton';
+import {PaymentButton} from './PaymentButton/';
 import {ReplenishAccountButton} from './ReplenishAccountButton/';
 import {TransferButton} from './TransferButton/';
 import {StatementButton} from './StatementButton';

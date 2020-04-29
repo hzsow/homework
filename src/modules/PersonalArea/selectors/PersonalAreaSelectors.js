@@ -8,7 +8,9 @@ const transferAccount = state => state.transferAccount;
 const form = state => state.form;  
 const changeUserPassword = state => state.changeUserPassword;  
 const changeUserProfile = state => state.changeUserProfile;  
+const paymentAccount = state => state.paymentAccount;  
 
+export const formValueSelector = createSelector(form, form => form);
 export const accountsList = createSelector(accounts, accounts => accounts.accounts);
 export const userId = createSelector(user, user => user.userId);
 export const userSelector = createSelector(user, user => user);
@@ -27,4 +29,5 @@ export const changeUserPasswordModalShowSelector = createSelector(changeUserPass
 export const changeUserPasswordLoaderSelector = createSelector(changeUserPassword, store => store.loader);
 export const changeUserProfileModalShowSelector = createSelector(changeUserProfile, store => store.isModalShow);
 export const changeUserProfileLoaderSelector = createSelector(changeUserProfile, store => store.loader);
-export const formValueSelector = createSelector(form, form => form);
+export const paymentAccountLoaderSelector = createSelector(paymentAccount, store => store.loader);
+export const paymentAccountModalShowSelector = createSelector(paymentAccount, store => store.isModalShow);
