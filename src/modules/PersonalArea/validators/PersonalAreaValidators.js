@@ -10,10 +10,30 @@ export const email = value =>
   'Неверный формат Email' : undefined
 export const number = value => value && isNaN(Number(value)) ? 'Только цифры' : undefined
 
-export const normalizeReplenish = value => {
+export const normalizeValue = value => {
   if (!value) {
     return value
   }
-  const onlyNums = value.replace(/[^\d]/g, '')
+  let onlyNums = value.replace(/[^.\d]/g, '').replace(/^(\d*\.?)|(\d*)\.?/g, "$1$2")
+
+  if (onlyNums.indexOf('.') !== -1 && onlyNums.substring(onlyNums.indexOf('.')+1).length > 2)
+    onlyNums = onlyNums.substring(0, onlyNums.length - 1);
   return onlyNums;
+}
+
+export const normalizeAccount = value => {
+  if (!value) {
+    return value;
+  }
+  const onlyNums = value.replace(/[^\d]/g, '')
+  if (onlyNums.length <= 1) {
+    return `4 `
+  }
+  if (onlyNums.length <= 4) {
+    return `${onlyNums.slice(0, 1)} ${onlyNums.slice(1, 4)}`
+  }
+  if (onlyNums.length <= 7) {
+    return `${onlyNums.slice(0, 1)} ${onlyNums.slice(1, 4)} ${onlyNums.slice(4, 7)}`
+  }
+  return `${onlyNums.slice(0, 1)} ${onlyNums.slice(1, 4)} ${onlyNums.slice(4,7)} ${onlyNums.slice(7,10)}`
 }

@@ -8,8 +8,10 @@ import userReducer from './modules/Login/reducers/userReducer';
 import newAccountReducer from './modules/PersonalArea/reducers/newAccountReducer';
 import deleteAccountReducer from './modules/PersonalArea/reducers/deleteAccountReducer';
 import replenishAccountReducer from './modules/PersonalArea/reducers/replenishAccountReducer';
+import transferAccountReducer from './modules/PersonalArea/reducers/transferAccountReducer';
 
 export const reducers = combineReducers({
+    transferAccount: transferAccountReducer,
     replenishAccount: replenishAccountReducer,
     deleteAccount: deleteAccountReducer, 
     newAccount: newAccountReducer,

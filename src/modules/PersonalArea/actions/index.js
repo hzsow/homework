@@ -3,6 +3,7 @@ export const ISACCOUNTSLIST_LOADER = 'ISACCOUNTSLIST_LOADER';
 export const ISACCOUNTSLIST_ERROR = 'ISACCOUNTSLIST_ERROR';
 export const ISACCOUNTSLIST_NEW_ACCOUNT = 'ISACCOUNTSLIST_NEW_ACCOUNT';
 export const ISACCOUNTSLIST_REPLENISH_ACCOUNT = 'ISACCOUNTSLIST_REPLENISH_ACCOUNT';
+export const ISACCOUNTSLIST_TRANSFER_ACCOUNT = 'ISACCOUNTSLIST_TRANSFER_ACCOUNT';
 export const ISACCOUNTSLIST_DELETE_ACCOUNT = 'ISACCOUNTSLIST_DELETE_ACCOUNT';
 export const SET_CURRENT_ACCOUNT = 'SET_CURRENT_ACCOUNT';
 export const SET_CURRENT_ACCOUNT_INDEX = 'SET_CURRENT_ACCOUNT_INDEX';
@@ -19,6 +20,11 @@ export const REPLENISH_ACCOUNT_ERROR = 'REPLENISH_ACCOUNT_ERROR';
 export const REPLENISH_ACCOUNT_SUCCESS = 'REPLENISH_ACCOUNT_SUCCESS';
 export const REPLENISH_ACCOUNT_MODAL_SHOW = 'REPLENISH_ACCOUNT_MODAL_SHOW';
 export const REPLENISH_ACCOUNT_MODAL_HIDE = 'REPLENISH_ACCOUNT_MODAL_HIDE';
+export const TRANSFER_ACCOUNT_LOADER = 'TRANSFER_ACCOUNT_LOADER';
+export const TRANSFER_ACCOUNT_ERROR = 'TRANSFER_ACCOUNT_ERROR';
+export const TRANSFER_ACCOUNT_SUCCESS = 'TRANSFER_ACCOUNT_SUCCESS';
+export const TRANSFER_ACCOUNT_MODAL_SHOW = 'TRANSFER_ACCOUNT_MODAL_SHOW';
+export const TRANSFER_ACCOUNT_MODAL_HIDE = 'TRANSFER_ACCOUNT_MODAL_HIDE';
 
 
 
@@ -48,6 +54,13 @@ export const isAccountsListNewAccount = (account) => {
 export const isAccountsListReplenishAccount = (value, uuid) => {
   return {
     type: ISACCOUNTSLIST_REPLENISH_ACCOUNT,
+    value,
+    uuid
+  }
+}
+export const isAccountsListTransferAccount = (value, uuid) => {
+  return {
+    type: ISACCOUNTSLIST_TRANSFER_ACCOUNT,
     value,
     uuid
   }
@@ -140,5 +153,32 @@ export const replenishModalShow = () => {
 export const replenishModalHide = () => {
   return {
     type: REPLENISH_ACCOUNT_MODAL_HIDE
+  }
+}
+export const transferAccountSuccess = () => {
+  return {
+    type: TRANSFER_ACCOUNT_SUCCESS,
+  }
+}
+export const transferAccountError = () => {
+  return {
+    type: TRANSFER_ACCOUNT_ERROR,
+  }
+}
+export const transferAccountLoader = ({value, account_number}) => {
+  return {
+    type: TRANSFER_ACCOUNT_LOADER,
+    value,
+    account_number
+  }
+}
+export const transferModalShow = () => {
+  return {
+    type: TRANSFER_ACCOUNT_MODAL_SHOW
+  }
+}
+export const transferModalHide = () => {
+  return {
+    type: TRANSFER_ACCOUNT_MODAL_HIDE
   }
 }

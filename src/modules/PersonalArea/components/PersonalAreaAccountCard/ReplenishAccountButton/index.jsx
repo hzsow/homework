@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ReplenishForm from './ReplenishForm';
 import {Button, Modal } from 'antd';
-import {replenishValueSelector, currentAccountValueSelector, replenishAccountLoaderSelector, replenishAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
+import {formValueSelector, currentAccountValueSelector, replenishAccountLoaderSelector, replenishAccountModalShow} from './../../../selectors/PersonalAreaSelectors';
 import { replenishAccountLoader, replenishModalHide, replenishModalShow } from '../../../actions/';
 
 export const ReplenishAccountButton = (props) => {
     const { balance, uuid } = props;
     const dispatch = useDispatch();
-    const replenishValue = useSelector(replenishValueSelector);
+    const replenishValue = useSelector(formValueSelector);
     const visible = useSelector(replenishAccountModalShow);
     const id = useSelector(currentAccountValueSelector);
     const loader = useSelector(replenishAccountLoaderSelector);
@@ -29,7 +29,7 @@ export const ReplenishAccountButton = (props) => {
             <Button onClick={onReplenishClick}>Пополнить</Button>
             <Modal
                 visible={visible}
-                title="На сколько бабок вы хотите пополнить этот счет?"
+                title="На какую сумму вы хотите пополнить этот счет?"
                 footer={[
                     <Button key="back" onClick={handleCancel}>
                     Отмена

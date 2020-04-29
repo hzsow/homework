@@ -4,6 +4,7 @@ const accounts = state => state.accounts;
 const currentAccount = state => state.currentAccount;  
 const user = state => state.user;  
 const replenishAccount = state => state.replenishAccount;  
+const transferAccount = state => state.transferAccount;  
 const form = state => state.form;  
 
 export const accountsList = createSelector(accounts, accounts => accounts.accounts);
@@ -15,7 +16,9 @@ export const accountsBalanceSelector = createSelector(accounts, accounts => acco
 export const currentAccountLoader = createSelector(currentAccount, current => current.isCurrentAccountLoader);
 export const currentAccountSelector = createSelector(accounts, currentAccount, (accounts, current) => accounts.accounts[current.currentAccount]);
 export const currentAccountValueSelector = createSelector(accounts, currentAccount, (accounts, current) => accounts.accounts[current.currentAccount].id);
-export const replenishValueSelector = createSelector(form, form => form);
+export const formValueSelector = createSelector(form, form => form);
+export const transferAccountLoaderSelector = createSelector(transferAccount, transfer => transfer.isTransferAccountLoader);
 export const replenishAccountLoaderSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountLoader);
 export const replenishAccountSuccessSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountSuccess);
+export const transferAccountModalShow = createSelector(transferAccount, transfer => transfer.isModalShow);
 export const replenishAccountModalShow = createSelector(replenishAccount, replenish => replenish.isModalShow);

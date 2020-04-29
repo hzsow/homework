@@ -20,7 +20,7 @@ function* newAccountFlow(action) {
     yield put(newAccountSuccess(response.data));
     yield put(isAccountsListNewAccount({
       userId, 
-      id: uuid, 
+      id: account_number, 
       account_number, 
       account_balance: 0
     }));

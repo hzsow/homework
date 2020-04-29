@@ -5,11 +5,8 @@ import {
   SET_CURRENT_ACCOUNT,
   setCurrentAccountSuccess,
   setCurrentAccountError,
-  setCurrentAccount,
   isAccountsListError,
   isAccountsListSuccess,
-  isAccountsListLoader,
-  SET_CURRENT_ACCOUNT_SUCCESS,
 } from "../actions";
 
 function* accountsListFlow(action) {
@@ -20,8 +17,6 @@ function* accountsListFlow(action) {
     yield delay(500);
     yield put(isAccountsListSuccess(response.data));
     yield put(setCurrentAccountSuccess(value ? {value}:{value: 0}));
-    // console.log(response);
-    console.log(`accountsList success `);
   } catch (error) {
     yield put(isAccountsListError(error));
     yield put(setCurrentAccountError());

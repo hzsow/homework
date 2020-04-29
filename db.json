@@ -1,6 +1,32 @@
 {
   "users": [
+    {
+      "email": "kalimgulovartur@gmail.com",
+      "password": "$2a$10$5PPaIWN1LdrvtpEC1iqf0eZWBC/Cp6JsSpRAbqjqwj88bHZ0iuTYi",
+      "first": "asdasd",
+      "isClient": true,
+      "id": 1
+    },
+    {
+      "email": "kalimgulovartur2@gmail.com",
+      "password": "$2a$10$8VxRa17Cc2vwg7Oxfkq7BeJOfOyUnzuQr2dDBrJIT2wqggb9KAxXi",
+      "first": "fsdfsdf",
+      "isClient": true,
+      "id": 2
+    }
   ],
   "accounts": [
+    {
+      "userId": "1",
+      "account_balance": 243,
+      "account_number": 4060465160,
+      "id": 4060465160
+    },
+    {
+      "userId": "2",
+      "account_balance": 0,
+      "account_number": 4836043409,
+      "id": 4836043409
+    }
   ]
 }

@@ -8,7 +8,7 @@ export const newAccountRequest = (userId, id, account_number) => {
         userId,
         account_balance: 0,
         account_number,
-        id
+        id: account_number
     })
 }
 export const deleteAccountRequest = (id) => {
@@ -18,4 +18,12 @@ export const replenishAccountRequest = (id, value) => {
     return axios.patch(`http://localhost:3051/accounts/${id}`,{
         account_balance: value
     })
+}
+export const getAccountsRequest = () => {
+    return axios.get(`http://localhost:3051/accounts/`)
+}
+export const transferAccountRequest = (account_number, value) => {
+    return axios.patch(`http://localhost:3051/accounts/${account_number}`,{
+        account_balance: value 
+    });
 }
