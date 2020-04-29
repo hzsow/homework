@@ -9,8 +9,14 @@ import newAccountReducer from './modules/PersonalArea/reducers/newAccountReducer
 import deleteAccountReducer from './modules/PersonalArea/reducers/deleteAccountReducer';
 import replenishAccountReducer from './modules/PersonalArea/reducers/replenishAccountReducer';
 import transferAccountReducer from './modules/PersonalArea/reducers/transferAccountReducer';
+import changeUserPasswordReducer from './modules/PersonalArea/reducers/changeUserPasswordReducer';
+import changeUserProfileReducer from './modules/PersonalArea/reducers/changeUserProfileReducer';
+import deleteUserProfileReducer from './modules/PersonalArea/reducers/deleteUserProfileReducer';
 
 export const reducers = combineReducers({
+    deleteUserProfile: deleteUserProfileReducer,
+    changeUserProfile: changeUserProfileReducer,
+    changeUserPassword: changeUserPasswordReducer,
     transferAccount: transferAccountReducer,
     replenishAccount: replenishAccountReducer,
     deleteAccount: deleteAccountReducer, 

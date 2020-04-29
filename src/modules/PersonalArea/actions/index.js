@@ -25,8 +25,19 @@ export const TRANSFER_ACCOUNT_ERROR = 'TRANSFER_ACCOUNT_ERROR';
 export const TRANSFER_ACCOUNT_SUCCESS = 'TRANSFER_ACCOUNT_SUCCESS';
 export const TRANSFER_ACCOUNT_MODAL_SHOW = 'TRANSFER_ACCOUNT_MODAL_SHOW';
 export const TRANSFER_ACCOUNT_MODAL_HIDE = 'TRANSFER_ACCOUNT_MODAL_HIDE';
-
-
+export const CHANGE_USER_PASSWORD_LOADER = 'CHANGE_USER_PASSWORD_LOADER';
+export const CHANGE_USER_PASSWORD_SUCCESS = 'CHANGE_USER_PASSWORD_SUCCESS';
+export const CHANGE_USER_PASSWORD_ERROR = 'CHANGE_USER_PASSWORD_ERROR';
+export const CHANGE_USER_PASSWORD_MODAL_SHOW = 'CHANGE_USER_PASSWORD_MODAL_SHOW';
+export const CHANGE_USER_PASSWORD_MODAL_HIDE = 'CHANGE_USER_PASSWORD_MODAL_HIDE';
+export const CHANGE_USER_PROFILE_LOADER = 'CHANGE_USER_PROFILE_LOADER';
+export const CHANGE_USER_PROFILE_SUCCESS = 'CHANGE_USER_PROFILE_SUCCESS';
+export const CHANGE_USER_PROFILE_ERROR = 'CHANGE_USER_PROFILE_ERROR';
+export const CHANGE_USER_PROFILE_MODAL_SHOW = 'CHANGE_USER_PROFILE_MODAL_SHOW';
+export const CHANGE_USER_PROFILE_MODAL_HIDE = 'CHANGE_USER_PROFILE_MODAL_HIDE';
+export const DELETE_USER_PROFILE_LOADER = 'DELETE_USER_PROFILE_LOADER';
+export const DELETE_USER_PROFILE_SUCCESS = 'DELETE_USER_PROFILE_SUCCESS';
+export const DELETE_USER_PROFILE_ERROR = 'DELETE_USER_PROFILE_ERROR';
 
 
 export const isAccountsListLoader = () => {
@@ -180,5 +191,74 @@ export const transferModalShow = () => {
 export const transferModalHide = () => {
   return {
     type: TRANSFER_ACCOUNT_MODAL_HIDE
+  }
+}
+export const changeUserPasswordLoader = ({oldPassword, newPassword}) => {
+  return {
+    type: CHANGE_USER_PASSWORD_LOADER,
+    oldPassword,
+    newPassword
+  }
+}
+export const changeUserPasswordSuccess = () => {
+  return {
+    type: CHANGE_USER_PASSWORD_SUCCESS
+  }
+}
+export const changeUserPasswordError = () => {
+  return {
+    type: CHANGE_USER_PASSWORD_ERROR
+  }
+}
+export const changeUserPasswordModalHide = () => {
+  return {
+    type: CHANGE_USER_PASSWORD_MODAL_HIDE
+  }
+}
+export const changeUserPasswordModalShow = () => {
+  return {
+    type: CHANGE_USER_PASSWORD_MODAL_SHOW
+  }
+}
+export const changeUserProfileLoader = ({newFirstName, newEmail}) => {
+  return {
+    type: CHANGE_USER_PROFILE_LOADER,
+    newFirstName,
+    newEmail
+  }
+}
+export const changeUserProfileSuccess = () => {
+  return {
+    type: CHANGE_USER_PROFILE_SUCCESS
+  }
+}
+export const changeUserProfileError = () => {
+  return {
+    type: CHANGE_USER_PROFILE_ERROR
+  }
+}
+export const changeUserProfileModalHide = () => {
+  return {
+    type: CHANGE_USER_PROFILE_MODAL_HIDE
+  }
+}
+export const changeUserProfileModalShow = () => {
+  return {
+    type: CHANGE_USER_PROFILE_MODAL_SHOW
+  }
+}
+export const deleteUserProfileLoader = () => {
+  return {
+    type: DELETE_USER_PROFILE_LOADER,
+  }
+}
+export const deleteUserProfileSuccess = () => {
+  return {
+    type: DELETE_USER_PROFILE_SUCCESS
+  }
+}
+export const deleteUserProfileError = () => {
+  return {
+    type: DELETE_USER_PROFILE_ERROR
   }
 }

@@ -27,3 +27,23 @@ export const transferAccountRequest = (account_number, value) => {
         account_balance: value 
     });
 }
+export const historyRequest = (account_number, type, date, value) => {
+    return axios.patch(`http://localhost:3051/history`, {
+        id: account_number,
+        data: {
+        type,
+        date,
+        value
+        } 
+    });
+}
+export const changeUserPasswordRequest = (account_number, type, date, value) => {
+    return axios.patch(`http://localhost:3051/history`, {
+        id: account_number,
+        data: {
+        type,
+        date,
+        value
+        } 
+    });
+}

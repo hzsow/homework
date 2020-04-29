@@ -25,7 +25,6 @@ export default (props) => {
         dispatch(newAccountLoader({length}));
       },
       onCancel() {
-        console.log('Cancel');
       },
     });
   }

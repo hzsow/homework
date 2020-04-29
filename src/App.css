@@ -84,3 +84,37 @@ background: rgba(59, 190, 255, 0.5);
 .PersonalAreaAccountCard_content span {
   display: block;
 }
+
+.userSettingsModal{
+  display: flex;
+  width: 250px !important;
+  height: 80%;
+  align-items: center;
+  text-align: center;
+}
+
+.userSettingsModal_button{
+  margin: 10px;
+}
+
+.userSettingsModal_card:hover{
+  box-shadow: 0 0px 0px #c0c0c0;
+  cursor: default;
+  transform: scale(1.00);
+}
+
+.userSettingsModal_card{
+  width: 250px;
+}
+.userSettingsModal_text{
+  display: block;
+  font-size: 16px;
+  text-align: start;
+}
+
+.ant-upload{
+  margin-bottom: 20px;
+}
+.ant-modal{
+  width: 300px !important;
+}

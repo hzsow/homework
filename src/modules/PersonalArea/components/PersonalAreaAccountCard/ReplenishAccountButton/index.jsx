@@ -30,6 +30,7 @@ export const ReplenishAccountButton = (props) => {
             <Modal
                 visible={visible}
                 title="На какую сумму вы хотите пополнить этот счет?"
+                onCancel={handleCancel}
                 footer={[
                     <Button key="back" onClick={handleCancel}>
                     Отмена

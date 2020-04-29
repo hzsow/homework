@@ -6,6 +6,8 @@ const user = state => state.user;
 const replenishAccount = state => state.replenishAccount;  
 const transferAccount = state => state.transferAccount;  
 const form = state => state.form;  
+const changeUserPassword = state => state.changeUserPassword;  
+const changeUserProfile = state => state.changeUserProfile;  
 
 export const accountsList = createSelector(accounts, accounts => accounts.accounts);
 export const userId = createSelector(user, user => user.userId);
@@ -16,9 +18,13 @@ export const accountsBalanceSelector = createSelector(accounts, accounts => acco
 export const currentAccountLoader = createSelector(currentAccount, current => current.isCurrentAccountLoader);
 export const currentAccountSelector = createSelector(accounts, currentAccount, (accounts, current) => accounts.accounts[current.currentAccount]);
 export const currentAccountValueSelector = createSelector(accounts, currentAccount, (accounts, current) => accounts.accounts[current.currentAccount].id);
-export const formValueSelector = createSelector(form, form => form);
 export const transferAccountLoaderSelector = createSelector(transferAccount, transfer => transfer.isTransferAccountLoader);
+export const transferAccountModalShow = createSelector(transferAccount, transfer => transfer.isModalShow);
 export const replenishAccountLoaderSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountLoader);
 export const replenishAccountSuccessSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountSuccess);
-export const transferAccountModalShow = createSelector(transferAccount, transfer => transfer.isModalShow);
 export const replenishAccountModalShow = createSelector(replenishAccount, replenish => replenish.isModalShow);
+export const changeUserPasswordModalShowSelector = createSelector(changeUserPassword, store => store.isModalShow);
+export const changeUserPasswordLoaderSelector = createSelector(changeUserPassword, store => store.loader);
+export const changeUserProfileModalShowSelector = createSelector(changeUserProfile, store => store.isModalShow);
+export const changeUserProfileLoaderSelector = createSelector(changeUserProfile, store => store.loader);
+export const formValueSelector = createSelector(form, form => form);

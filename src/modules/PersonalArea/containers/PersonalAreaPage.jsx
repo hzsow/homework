@@ -29,6 +29,7 @@ export const PersonalAreaPage = () => {
             <Layout>
             <Layout>
                 <PersonalAreaAccountCard account={currentAccount} userId={userId}/>
+                <PersonalAreaTransactions/>
             </Layout>
                 <PersonalAreaAccountList accounts={accounts} current={currentAccount} userId={userId}/>
             </Layout>
