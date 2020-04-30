@@ -1,21 +1,31 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Modal} from 'antd';
 import { deleteUserProfileLoader } from '../../../actions/';
+import { accountsBalanceSelector } from '../../../selectors/PersonalAreaSelectors';
 
 const { confirm } = Modal;
 
 export const DeleteProfileButton = () => {
     const dispatch = useDispatch();
+    const accountsBalance = useSelector(accountsBalanceSelector);
     const showConfirm = () => {
         confirm({
           title: 'Вы точно хотите удалить аккаунт?',
           okText: 'Да',
           cancelText: 'Нет',
           onOk() {
-            dispatch(deleteUserProfileLoader());
-          },
-          onCancel() {
+            if (accountsBalance === 0)
+                dispatch(deleteUserProfileLoader());
+              else
+                confirm({
+                  title: 'На счетах остались средства.',
+                  okText: 'Удалить аккаунт',
+                  cancelText: 'Отмена',
+                  onOk(){
+                    dispatch(deleteUserProfileLoader());
+                  }
+                })
           },
         });
       }

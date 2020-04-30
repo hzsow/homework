@@ -6,6 +6,8 @@ import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import {changeUserProfileLoaderSelector, changeUserProfileModalShowSelector} from '../../../../selectors/PersonalAreaSelectors'
 import { changeUserProfileModalHide, changeUserProfileModalShow, changeUserProfileLoader} from '../../../../actions/'
+import {reset} from 'redux-form';
+
 const { Dragger } = Upload;
 
 const props = {
@@ -38,6 +40,7 @@ export const ChangeUserProfileButton = (props) => {
             ...values,
             oldEmail: email
           }}));
+          dispatch(reset('changeUserProfile'));
       }
       const onClick = () => {
         dispatch(changeUserProfileModalShow());

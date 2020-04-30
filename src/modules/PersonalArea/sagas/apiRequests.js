@@ -58,3 +58,6 @@ export const loginApiRequest = (email, password) => {
         password
     })
 }
+export const deleteUserProfileRequest = (userId) => {
+    return axios.delete(`http://localhost:3051/users/${userId}`)
+}

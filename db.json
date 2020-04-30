@@ -8,13 +8,6 @@
       "id": 1
     },
     {
-      "email": "kalimgulovartur2@gmail.com",
-      "password": "$2a$10$8VxRa17Cc2vwg7Oxfkq7BeJOfOyUnzuQr2dDBrJIT2wqggb9KAxXi",
-      "first": "fsdfsdf",
-      "isClient": true,
-      "id": 2
-    },
-    {
       "email": "kalimgulovartur5@gmail.com",
       "password": "$2a$10$TwMPUyJ0.dXLr6qaFyLgg.ffIQowD9HqROHBZGU7CrmvNvlW1CY/W",
       "first": "asdasd",
@@ -27,6 +20,13 @@
       "first": "asdasd",
       "isClient": true,
       "id": 4
+    },
+    {
+      "email": "kalimgulovartur@gmail.com",
+      "password": "$2a$10$nh3RvIWptgPhoieapvIDG..7KmihSND/1yncr7ZxK5/k0T0lwx1tm",
+      "first": "Артур",
+      "isClient": true,
+      "id": 5
     }
   ],
   "accounts": [
@@ -35,12 +35,6 @@
       "account_balance": 3059,
       "account_number": 4060465160,
       "id": 4060465160
-    },
-    {
-      "userId": "2",
-      "account_balance": 0,
-      "account_number": 4836043409,
-      "id": 4836043409
     },
     {
       "userId": "1",
@@ -65,6 +59,18 @@
       "account_balance": 0,
       "account_number": 4129965144,
       "id": 4129965144
+    },
+    {
+      "userId": "5",
+      "account_balance": 0,
+      "account_number": 4003602737,
+      "id": 4003602737
+    },
+    {
+      "userId": "5",
+      "account_balance": 123,
+      "account_number": 4930935874,
+      "id": 4930935874
     }
   ],
   "history": []

@@ -4,6 +4,7 @@ import { Button, Modal, message } from 'antd';
 import ChangePasswordForm from './ChangePasswordForm';
 import {changeUserPasswordLoaderSelector, changeUserPasswordModalShowSelector} from '../../../../selectors/PersonalAreaSelectors'
 import { changeUserPasswordModalHide, changeUserPasswordModalShow, changeUserPasswordLoader} from '../../../../actions/'
+import { reset } from 'redux-form';
 
 export const ChangePasswordButton = (props) => {
     const { email } = props;
@@ -21,6 +22,7 @@ export const ChangePasswordButton = (props) => {
                     email
                 }
             }));
+          dispatch(reset('changeUserPassword'));
         } else {
             message.warning('Пароли не совпадают');
         }
