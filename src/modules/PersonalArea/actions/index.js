@@ -180,11 +180,10 @@ export const transferAccountError = () => {
     type: TRANSFER_ACCOUNT_ERROR,
   }
 }
-export const transferAccountLoader = ({value, account_number}) => {
+export const transferAccountLoader = ({payload}) => {
   return {
     type: TRANSFER_ACCOUNT_LOADER,
-    value,
-    account_number
+    payload
   }
 }
 export const transferModalShow = () => {

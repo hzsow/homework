@@ -5,12 +5,10 @@ let initialState = {
     isAccountsLoader: false,
     isAccountsSuccess: false,
     accounts: [{
-
     }]
 };
 
 export default (state = initialState, action) => {
-    console.log(action)
     return produce(state, draft => {
         if (action.type === ISACCOUNTSLIST_SUCCESS){
             draft.isAccountsLoader = false;

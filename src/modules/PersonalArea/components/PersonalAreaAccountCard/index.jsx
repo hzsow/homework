@@ -30,15 +30,15 @@ export default (props) => {
                 <div>
                     <Space size='middle'>
                         <ReplenishAccountButton balance={account.account_balance} uuid={account.id}/>
-                        <TransferButton/>
-                        <PaymentButton/>
+                        <TransferButton balance={account.account_balance} id={account.id}/>
+                        <PaymentButton balance={account.account_balance} id={account.id}/>
                     </Space>
                 </div>
                 <div>
                     <Space size='large'>
                         <StatementButton/>
                         <CreateTemplateButton/>
-                        <DeleteAccountButton uuid={account.id} userId={userId}/>
+                        <DeleteAccountButton uuid={account.id} userId={userId} balance={account.account_balance}/>
                     </Space>
                 </div>
             </div>
