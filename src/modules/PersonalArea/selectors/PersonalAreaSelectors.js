@@ -5,6 +5,7 @@ const currentAccount = state => state.currentAccount;
 const user = state => state.user;  
 const replenishAccount = state => state.replenishAccount;  
 const transferAccount = state => state.transferAccount;  
+const transferEachOtherAccount = state => state.transferEachOtherAccount;  
 const form = state => state.form;  
 const changeUserPassword = state => state.changeUserPassword;  
 const changeUserProfile = state => state.changeUserProfile;  
@@ -28,6 +29,8 @@ export const currentAccountBalanceSelector = createSelector(accounts, currentAcc
 });
 export const transferAccountLoaderSelector = createSelector(transferAccount, transfer => transfer.isTransferAccountLoader);
 export const transferAccountModalShow = createSelector(transferAccount, transfer => transfer.isModalShow);
+export const transferEachOtherAccountLoaderSelector = createSelector(transferEachOtherAccount, transfer => transfer.loader);
+export const transferEachOtherAccountModalShowSelector = createSelector(transferEachOtherAccount, transfer => transfer.isModalShow);
 export const replenishAccountLoaderSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountLoader);
 export const replenishAccountSuccessSelector = createSelector(replenishAccount, replenish => replenish.isReplenishAccountSuccess);
 export const replenishAccountModalShow = createSelector(replenishAccount, replenish => replenish.isModalShow);

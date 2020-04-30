@@ -35,11 +35,24 @@ export const FormItemItemLayout = ({...props}) => {
   )
 }
 
+const makeField2 = Component => ({ input, meta, children, hasFeedback, label, ...rest }) => {
+  const hasError = meta.touched && meta.invalid;
+  const { value, onBlur, onChange, onDragStart, onDrop, onFocus, name } = input;
+  return (
+    <Form.Item
+      label={label}
+      validateStatus={hasError ? "error" : "success"}
+      hasFeedback={hasFeedback && hasError}
+      help={hasError && meta.error}
+    >
+      <Component value={value} name={name} onChange={onChange} {...rest} children={children} />
+    </Form.Item>
+  );
+};
 const makeField = Component => ({ input, meta, children, hasFeedback, label, ...rest }) => {
   const hasError = meta.touched && meta.invalid;
   return (
     <FormItemItemLayout
-      rules={[{ required: true }]}
       label={label}
       validateStatus={hasError ? "error" : "success"}
       hasFeedback={hasFeedback && hasError}
@@ -53,7 +66,7 @@ const makeField = Component => ({ input, meta, children, hasFeedback, label, ...
 export const AInput = makeField(Input);
 export const AInputPassword = makeField(Input.Password);
 export const ARadioGroup = makeField(RadioGroup);
-export const ASelect = makeField(Select);
+export const ASelect = makeField2(Select);
 export const ACheckbox = makeField(Checkbox);
 export const ATextarea = makeField(TextArea);
 export const ARangePicker = makeField(RangePicker);

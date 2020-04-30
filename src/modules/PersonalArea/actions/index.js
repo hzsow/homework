@@ -25,6 +25,11 @@ export const TRANSFER_ACCOUNT_ERROR = 'TRANSFER_ACCOUNT_ERROR';
 export const TRANSFER_ACCOUNT_SUCCESS = 'TRANSFER_ACCOUNT_SUCCESS';
 export const TRANSFER_ACCOUNT_MODAL_SHOW = 'TRANSFER_ACCOUNT_MODAL_SHOW';
 export const TRANSFER_ACCOUNT_MODAL_HIDE = 'TRANSFER_ACCOUNT_MODAL_HIDE';
+export const TRANSFER_EACH_OTHER_ACCOUNT_LOADER = 'TRANSFER_EACH_OTHER_ACCOUNT_LOADER';
+export const TRANSFER_EACH_OTHER_ACCOUNT_ERROR = 'TRANSFER_EACH_OTHER_ACCOUNT_ERROR';
+export const TRANSFER_EACH_OTHER_ACCOUNT_SUCCESS = 'TRANSFER_EACH_OTHER_ACCOUNT_SUCCESS';
+export const TRANSFER_EACH_OTHER_ACCOUNT_MODAL_SHOW = 'TRANSFER_EACH_OTHER_ACCOUNT_MODAL_SHOW';
+export const TRANSFER_EACH_OTHER_ACCOUNT_MODAL_HIDE = 'TRANSFER_EACH_OTHER_ACCOUNT_MODAL_HIDE';
 export const CHANGE_USER_PASSWORD_LOADER = 'CHANGE_USER_PASSWORD_LOADER';
 export const CHANGE_USER_PASSWORD_SUCCESS = 'CHANGE_USER_PASSWORD_SUCCESS';
 export const CHANGE_USER_PASSWORD_ERROR = 'CHANGE_USER_PASSWORD_ERROR';
@@ -201,6 +206,32 @@ export const transferModalShow = () => {
 export const transferModalHide = () => {
   return {
     type: TRANSFER_ACCOUNT_MODAL_HIDE
+  }
+}
+export const transferEachOtherAccountSuccess = () => {
+  return {
+    type: TRANSFER_EACH_OTHER_ACCOUNT_SUCCESS,
+  }
+}
+export const transferEachOtherAccountError = () => {
+  return {
+    type: TRANSFER_EACH_OTHER_ACCOUNT_ERROR,
+  }
+}
+export const transferEachOtherAccountLoader = ({payload}) => {
+  return {
+    type: TRANSFER_EACH_OTHER_ACCOUNT_LOADER,
+    payload
+  }
+}
+export const transferEachOtherModalShow = () => {
+  return {
+    type: TRANSFER_EACH_OTHER_ACCOUNT_MODAL_SHOW
+  }
+}
+export const transferEachOtherModalHide = () => {
+  return {
+    type: TRANSFER_EACH_OTHER_ACCOUNT_MODAL_HIDE
   }
 }
 export const changeUserPasswordLoader = ({payload}) => {

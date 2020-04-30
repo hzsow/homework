@@ -116,7 +116,7 @@ background: rgba(59, 190, 255, 0.5);
   margin-bottom: 20px;
 }
 .ant-modal{
-  width: 300px !important;
+  width: 320px !important;
 }
 .ant-modal-body{
   text-align: center;
@@ -133,4 +133,7 @@ background: rgba(59, 190, 255, 0.5);
 }
 .ant-form-item-control-input-content{
   text-align: center;
+}
+.ant-select-selection-search-input{
+  text-align: left !important;
 }

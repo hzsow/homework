@@ -6,6 +6,7 @@ import newAccountSagas from './modules/PersonalArea/sagas/newAccountSagas';
 import deleteAccountSagas from './modules/PersonalArea/sagas/deleteAccountSagas';
 import replenishAccountSagas from './modules/PersonalArea/sagas/replenishAccountSagas';
 import transferAccountSagas from './modules/PersonalArea/sagas/transferAccountSagas';
+import transferEachOtherAccountSagas from './modules/PersonalArea/sagas/transferEachOtherAccountSagas';
 import changeUserProfileSagas from './modules/PersonalArea/sagas/changeUserProfileSagas';
 import changeUserPasswordSagas from './modules/PersonalArea/sagas/changeUserPasswordSagas';
 import deleteUserProfileSagas from './modules/PersonalArea/sagas/deleteUserProfileSagas';
@@ -18,6 +19,7 @@ export default function* rootSagas () {
     deleteUserProfileSagas(),
     changeUserProfileSagas(),
     changeUserPasswordSagas(),
+    transferEachOtherAccountSagas(),
     transferAccountSagas(),
     replenishAccountSagas(),
     deleteAccountSagas(),

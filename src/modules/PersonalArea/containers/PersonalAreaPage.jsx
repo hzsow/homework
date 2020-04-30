@@ -30,7 +30,7 @@ export const PersonalAreaPage = () => {
                 { !user.moderationLoader && 
                     <Layout>
                         <Layout>
-                            <PersonalAreaAccountCard account={currentAccount} userId={userId}/>
+                            <PersonalAreaAccountCard accounts={accounts} account={currentAccount} userId={userId}/>
                             <PersonalAreaTransactions/>
                         </Layout>
                         <PersonalAreaAccountList accounts={accounts} current={currentAccount} userId={userId}/>

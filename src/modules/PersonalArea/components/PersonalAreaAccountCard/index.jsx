@@ -8,12 +8,13 @@ import {PaymentButton} from './PaymentButton/';
 import {ReplenishAccountButton} from './ReplenishAccountButton/';
 import {TransferButton} from './TransferButton/';
 import {StatementButton} from './StatementButton';
+import {TransferEachOtherButton} from './TransferEachOtherButton/';
 const { Content } = Layout;
 const { Text } = Typography;
 
 
 export default (props) => {
-    const { account, userId } = props;
+    const { accounts, account, userId } = props;
     const loader = useSelector(currentAccountLoader);
     const balance = useSelector(currentAccountBalanceSelector);
 
@@ -31,6 +32,7 @@ export default (props) => {
                     <Space size='middle'>
                         <ReplenishAccountButton balance={account.account_balance} uuid={account.id}/>
                         <TransferButton balance={account.account_balance} id={account.id}/>
+                        <TransferEachOtherButton balance={account.account_balance} accounts={accounts}/>
                         <PaymentButton balance={account.account_balance} id={account.id}/>
                     </Space>
                 </div>
