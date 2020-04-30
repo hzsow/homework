@@ -30,8 +30,8 @@ export const UserSettingsButton = ({...props}) => {
                         <Text className="userSettingsModal_text"><b>Email:</b> {user.email}</Text>
                         <Text className="userSettingsModal_text"><b>Статус:</b> {user.isModerated?'Клиент':'Пользователь'}</Text>
                 </Card>
-                    <ChangeUserProfileButton/>
-                    <ChangePasswordButton/>
+                    <ChangeUserProfileButton email={user.email}/>
+                    <ChangePasswordButton email={user.email}/>
                     <DeleteProfileButton/>
         </Modal>
     </>

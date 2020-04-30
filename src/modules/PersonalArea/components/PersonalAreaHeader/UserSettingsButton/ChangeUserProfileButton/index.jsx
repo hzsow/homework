@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Modal } from 'antd';
 import ChangeUserProfileForm from './ChangeUserProfileForm';
 import { Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import {changeUserProfileLoaderSelector, changeUserProfileModalShowSelector, formValueSelector} from '../../../../selectors/PersonalAreaSelectors'
+import {changeUserProfileLoaderSelector, changeUserProfileModalShowSelector} from '../../../../selectors/PersonalAreaSelectors'
 import { changeUserProfileModalHide, changeUserProfileModalShow, changeUserProfileLoader} from '../../../../actions/'
 const { Dragger } = Upload;
 
@@ -18,25 +18,26 @@ const props = {
       console.log(info.file, info.fileList);
     }
     if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
+      message.success(`${info.file.name} файл загружен успешно.`);
     } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
+      message.error(`${info.file.name} ошибка загрузки.`);
     }
   },
 };
 
-export const ChangeUserProfileButton = () => {
+export const ChangeUserProfileButton = (props) => {
+    const { email } = props;
     const dispatch = useDispatch();
     const visible = useSelector(changeUserProfileModalShowSelector);
     const loader = useSelector(changeUserProfileLoaderSelector);
-    const form = useSelector(formValueSelector);
     const onCancel = () => {
         dispatch(changeUserProfileModalHide());
       }
-      const onOk = () => {
-        const values = form.changeUserProfile.values;
-        if (values)
-          dispatch(changeUserProfileLoader({newFirstName: values.newFirstName, newEmail: values.newEmail}));
+      const onOk = (values) => {
+          dispatch(changeUserProfileLoader({payload:{
+            ...values,
+            oldEmail: email
+          }}));
       }
       const onClick = () => {
         dispatch(changeUserProfileModalShow());
@@ -49,26 +50,15 @@ export const ChangeUserProfileButton = () => {
                 title="Изменить профиль"
                 onCancel={onCancel}
                 footer={[
-                    <Button key="back" onClick={onCancel}>
-                    Отмена
-                    </Button>,
-                    <Button key="submit" type="button" loading={loader} onClick={onOk}>
-                    Изменить профиль
-                    </Button>,
                 ]}
                 >
-                
                 <Dragger {...props}>
                     <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                     </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                    band files
-                    </p>
+                    <p className="ant-upload-text">Нажмите или перетащите файл для загрузки</p>
                 </Dragger>
-                <ChangeUserProfileForm/>
+                <ChangeUserProfileForm onSubmit={onOk} loader={loader}/>
             </Modal>
         </div>
     )

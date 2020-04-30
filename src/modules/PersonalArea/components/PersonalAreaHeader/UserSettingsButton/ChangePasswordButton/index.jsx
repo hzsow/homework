@@ -1,22 +1,29 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Modal } from 'antd';
+import { Button, Modal, message } from 'antd';
 import ChangePasswordForm from './ChangePasswordForm';
-import {changeUserPasswordLoaderSelector, formValueSelector, changeUserPasswordModalShowSelector} from '../../../../selectors/PersonalAreaSelectors'
+import {changeUserPasswordLoaderSelector, changeUserPasswordModalShowSelector} from '../../../../selectors/PersonalAreaSelectors'
 import { changeUserPasswordModalHide, changeUserPasswordModalShow, changeUserPasswordLoader} from '../../../../actions/'
 
-export const ChangePasswordButton = () => {
+export const ChangePasswordButton = (props) => {
+    const { email } = props;
     const dispatch = useDispatch();
     const visible = useSelector(changeUserPasswordModalShowSelector);
     const loader = useSelector(changeUserPasswordLoaderSelector);
-    const form = useSelector(formValueSelector);
     const onCancel = () => {
         dispatch(changeUserPasswordModalHide());
     }
-    const onOk = () => {
-        const values = form.changeUserPassword.values;
-        if (values)
-            dispatch(changeUserPasswordLoader({newPassword: values.newPassword, oldPassword: values.oldPassword}));
+    const onOk = (values) => {
+        if (values.newPassword === values.confrmNewPassword){
+            dispatch(changeUserPasswordLoader({
+                payload:{
+                    ...values,
+                    email
+                }
+            }));
+        } else {
+            message.warning('Пароли не совпадают');
+        }
     }
     const onClick = () => {
         dispatch(changeUserPasswordModalShow());
@@ -29,15 +36,9 @@ export const ChangePasswordButton = () => {
                 title="Изменить пароль"
                 onCancel={onCancel}
                 footer={[
-                    <Button key="back" onClick={onCancel}>
-                    Отмена
-                    </Button>,
-                    <Button key="submit" type="button" loading={loader} onClick={onOk}>
-                    Изменить пароль
-                    </Button>,
                 ]}
                 >
-                <ChangePasswordForm/>
+                <ChangePasswordForm onSubmit={onOk} loader={loader}/>
             </Modal>
         </div>
     )

@@ -43,7 +43,14 @@ export const PAYMENT_ACCOUNT_SUCCESS = 'PAYMENT_ACCOUNT_SUCCESS';
 export const PAYMENT_ACCOUNT_ERROR = 'PAYMENT_ACCOUNT_ERROR';
 export const PAYMENT_ACCOUNT_MODAL_SHOW = 'PAYMENT_ACCOUNT_MODAL_SHOW';
 export const PAYMENT_ACCOUNT_MODAL_HIDE = 'PAYMENT_ACCOUNT_MODAL_HIDE';
+export const GET_USER = 'GET_USER'
 
+export const getUser = ({userId}) => {
+  return {
+    type: GET_USER,
+    userId
+  }
+}
 export const isAccountsListLoader = () => {
   return {
     type: ISACCOUNTSLIST_LOADER,
@@ -196,11 +203,10 @@ export const transferModalHide = () => {
     type: TRANSFER_ACCOUNT_MODAL_HIDE
   }
 }
-export const changeUserPasswordLoader = ({oldPassword, newPassword}) => {
+export const changeUserPasswordLoader = ({payload}) => {
   return {
     type: CHANGE_USER_PASSWORD_LOADER,
-    oldPassword,
-    newPassword
+    payload,
   }
 }
 export const changeUserPasswordSuccess = () => {
@@ -223,11 +229,10 @@ export const changeUserPasswordModalShow = () => {
     type: CHANGE_USER_PASSWORD_MODAL_SHOW
   }
 }
-export const changeUserProfileLoader = ({newFirstName, newEmail}) => {
+export const changeUserProfileLoader = ({payload}) => {
   return {
     type: CHANGE_USER_PROFILE_LOADER,
-    newFirstName,
-    newEmail
+    payload,
   }
 }
 export const changeUserProfileSuccess = () => {

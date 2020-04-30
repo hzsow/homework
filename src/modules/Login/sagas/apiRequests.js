@@ -3,16 +3,16 @@ import axios from 'axios';
 export const loginApiRequest = (email, password) => {
     return axios.post("http://localhost:3051/login", 
     {
-        email: email,
-        password: password
+        email,
+        password
     })
 }
 export const signupApiRequest = (email, first, password) => {
     return axios.post("http://localhost:3051/register", 
     {
-        email: email,
-        password: password,
-        first: first,
+        email,
+        password,
+        first,
         isClient: false
     })
 }

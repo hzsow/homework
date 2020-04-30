@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
             draft.success = true;
         }
         if (action.type === CHANGE_USER_PASSWORD_ERROR){
-            draft.isModalShow = false;
+            draft.isModalShow = true;
             draft.loader = false;
             draft.success = false;
         }

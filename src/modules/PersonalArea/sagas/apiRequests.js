@@ -37,13 +37,24 @@ export const historyRequest = (account_number, type, date, value) => {
         } 
     });
 }
-export const changeUserPasswordRequest = (account_number, type, date, value) => {
-    return axios.patch(`http://localhost:3051/history`, {
-        id: account_number,
-        data: {
-        type,
-        date,
-        value
-        } 
-    });
+
+export const changeUserPasswordRequest = (userId, password) => {
+    return axios.patch(`http://localhost:3051/users/${userId}`, 
+    {
+        password,
+    })
+}
+export const changeUserProfileRequest = (userId, email, first) => {
+    return axios.patch(`http://localhost:3051/users/${userId}`, 
+    {
+        email,
+        first 
+    })
+}
+export const loginApiRequest = (email, password) => {
+    return axios.post("http://localhost:3051/login", 
+    {
+        email,
+        password
+    })
 }
