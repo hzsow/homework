@@ -4,10 +4,13 @@ import { ISACCOUNTSLIST_SUCCESS, ISACCOUNTSLIST_LOADER, ISACCOUNTSLIST_ERROR, IS
 let initialState = {
     isAccountsLoader: false,
     isAccountsSuccess: false,
-    accounts: []
+    accounts: [{
+
+    }]
 };
 
 export default (state = initialState, action) => {
+    console.log(action)
     return produce(state, draft => {
         if (action.type === ISACCOUNTSLIST_SUCCESS){
             draft.isAccountsLoader = false;

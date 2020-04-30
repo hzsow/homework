@@ -4,7 +4,7 @@ import { LOGIN_ISAUTHLOADER, LOGIN_ERROR, loginSuccess, loginError } from '../ac
 import jwt from 'jsonwebtoken';
 import {message} from 'antd';
 
-function* logout () {
+function logout () {
   localStorage.removeItem('token');
 }
 

@@ -26,6 +26,7 @@ export const ReplenishAccountButton = (props) => {
     return <div>
             <Button onClick={onReplenishClick}>Пополнить</Button>
             <Modal
+                className="ant-modal-padding-zero"
                 visible={visible}
                 title="На какую сумму вы хотите пополнить этот счет?"
                 onCancel={handleCancel}

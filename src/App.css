@@ -119,7 +119,9 @@ background: rgba(59, 190, 255, 0.5);
   width: 300px !important;
 }
 .ant-modal-body{
-  padding: 24px !important;
+  text-align: center;
+}
+.ant-modal-padding-zero{
   padding-bottom: 0px !important;
 }
 .ant-drawer-content-wrapper{
@@ -127,6 +129,7 @@ background: rgba(59, 190, 255, 0.5);
 }
 .ant-drawer-body{
   padding: 5% 25%;
+  text-align: center;
 }
 .ant-form-item-control-input-content{
   text-align: center;

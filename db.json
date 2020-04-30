@@ -13,12 +13,26 @@
       "first": "fsdfsdf",
       "isClient": true,
       "id": 2
+    },
+    {
+      "email": "kalimgulovartur5@gmail.com",
+      "password": "$2a$10$TwMPUyJ0.dXLr6qaFyLgg.ffIQowD9HqROHBZGU7CrmvNvlW1CY/W",
+      "first": "asdasd",
+      "isClient": true,
+      "id": 3
+    },
+    {
+      "email": "kalimgulovartur6@gmail.com",
+      "password": "$2a$10$np00NggBtLzgpm.s7ivWiu.q91LCz/SGIdqnvo9lDPxb4OgdeZN3q",
+      "first": "asdasd",
+      "isClient": true,
+      "id": 4
     }
   ],
   "accounts": [
     {
       "userId": "1",
-      "account_balance": 2834,
+      "account_balance": 3059,
       "account_number": 4060465160,
       "id": 4060465160
     },
@@ -30,9 +44,21 @@
     },
     {
       "userId": "1",
-      "account_balance": 1357.25,
+      "account_balance": 1580.5,
       "account_number": 4541103979,
       "id": 4541103979
+    },
+    {
+      "userId": "1",
+      "account_balance": 123,
+      "account_number": 4129216088,
+      "id": 4129216088
+    },
+    {
+      "userId": "4",
+      "account_balance": 100,
+      "account_number": 4689026156,
+      "id": 4689026156
     }
   ],
   "history": []

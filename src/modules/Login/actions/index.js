@@ -8,7 +8,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGIN_EXISTING = 'LOGIN_EXISTING'
 export const LOGOUT = 'LOGOUT'
-export const USER_MODERATION = 'USER_MODERATION'
+export const USER_MODERATION_LOADER = 'USER_MODERATION_LOADER'
+export const USER_MODERATION_SUCCESS = 'USER_MODERATION_SUCCESS'
+export const USER_MODERATION_ERROR = 'USER_MODERATION_ERROR'
 export const GET_USER = 'GET_USER'
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS'
 export const GET_USER_ERROR = 'GET_USER_ERROR'
@@ -68,10 +70,19 @@ export const signupHide = () => {
     type: SIGNUP_HIDE, 
   }
 }
-export const userModeration = ({userId}) => {
+export const userModerationLoader = () => {
   return { 
-    type: USER_MODERATION, 
-    userId
+    type: USER_MODERATION_LOADER, 
+  }
+}
+export const userModerationSuccess = () => {
+  return { 
+    type: USER_MODERATION_SUCCESS, 
+  }
+}
+export const userModerationError = () => {
+  return { 
+    type: USER_MODERATION_ERROR, 
   }
 }
 export const getUser = ({userId}) => {

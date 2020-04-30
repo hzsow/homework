@@ -2,14 +2,19 @@ import produce from 'immer';
 import {
     GET_USER,
     GET_USER_SUCCESS,
-    GET_USER_ERROR
+    GET_USER_ERROR,
+    USER_MODERATION_ERROR,
+    USER_MODERATION_SUCCESS,
+    USER_MODERATION_LOADER
   } from '../actions';
   
 let initialState = {
     userId: null,
     email: null,
     firstName: null,
-    isModerated: false
+    isModerated: false,
+    moderationLoader: false,
+    moderationSuccess: false
 };
 
 export default (state = initialState, action) => {
@@ -28,6 +33,18 @@ export default (state = initialState, action) => {
             draft.userId = null;
             draft.email = null;
             draft.isModerated = false;
+        }
+        if (action.type === USER_MODERATION_LOADER){
+            draft.moderationLoader = true;
+            draft.moderationSuccess = false;
+        }
+        if (action.type === USER_MODERATION_SUCCESS){
+            draft.moderationLoader = false;
+            draft.moderationSuccess = true;
+        }
+        if (action.type === USER_MODERATION_ERROR){
+            draft.moderationLoader = false;
+            draft.moderationSuccess = false;
         }
     })
 }

@@ -9,8 +9,6 @@ import { RollbackOutlined } from '@ant-design/icons';
 
 const SignupForm = React.memo((props) => {
     const { handleSubmit, pristine, submitting, backButton} = props;
-    console.log(props);
-    
     return (
         <form onSubmit={handleSubmit}>
             <FormItemItemLayout>

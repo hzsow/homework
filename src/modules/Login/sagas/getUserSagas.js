@@ -1,6 +1,6 @@
 import { call, put, takeEvery, delay } from 'redux-saga/effects';
 import {getUserApiRequest, setUserModeratedApiRequest} from './apiRequests';
-import { GET_USER, getUserSuccess, getUserError } from '../actions';
+import { GET_USER, getUserSuccess, getUserError, userModerationLoader, userModerationError, userModerationSuccess } from '../actions';
 import { message } from 'antd';
 
 function* getUserFlow (action) {
@@ -14,16 +14,19 @@ function* getUserFlow (action) {
     }
   } catch (error) {
     yield put(getUserError(error));
-    alert(error);
+    message.error(error);
   }
 }
 function* userModeration(userId){
   try {
+    yield put(userModerationLoader());
     yield call(setUserModeratedApiRequest, userId);
     yield call(messageShow);
     yield delay(5000);
+    yield put(userModerationSuccess());
   } catch (error){
-    alert(error)
+    message.error(error)
+    yield put(userModerationError());
   }
 }
 function messageShow(){

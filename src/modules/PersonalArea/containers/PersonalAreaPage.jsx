@@ -4,7 +4,7 @@ import PersonalAreaAccountCard from '../components/PersonalAreaAccountCard'
 import PersonalAreaAccountList from '../components/PersonalAreaAccountList'
 import PersonalAreaHeader from '../components/PersonalAreaHeader'
 import PersonalAreaTransactions from '../components/PersonalAreaTransactions'
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import { accountsList, userSelector, currentAccountSelector } from '../selectors/PersonalAreaSelectors';
 import { isAccountsListLoader } from '../actions';
 import { getUser } from '../../Login/actions'
@@ -17,7 +17,7 @@ export const PersonalAreaPage = () => {
     const currentAccount = useSelector(currentAccountSelector);
     const userId = localStorage.getItem('userId');
     // console.log(currentAccount)     
-    // console.log(useSelector(state => state))
+    console.log(useSelector(state => state))
     useEffect(() => {
         dispatch(getUser({userId}));
         dispatch(isAccountsListLoader({userId}));
@@ -26,13 +26,16 @@ export const PersonalAreaPage = () => {
     return(
         <Layout>
             <PersonalAreaHeader user={user}/>
-            <Layout>
-            <Layout>
-                <PersonalAreaAccountCard account={currentAccount} userId={userId}/>
-                <PersonalAreaTransactions/>
-            </Layout>
-                <PersonalAreaAccountList accounts={accounts} current={currentAccount} userId={userId}/>
-            </Layout>
+                { user.moderationLoader && <Spin/>}
+                { !user.moderationLoader && 
+                    <Layout>
+                        <Layout>
+                            <PersonalAreaAccountCard account={currentAccount} userId={userId}/>
+                            <PersonalAreaTransactions/>
+                        </Layout>
+                        <PersonalAreaAccountList accounts={accounts} current={currentAccount} userId={userId}/>
+                    </Layout>
+                }
         </Layout>
     )
 }

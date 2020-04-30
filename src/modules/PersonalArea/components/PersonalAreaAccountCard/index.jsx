@@ -1,7 +1,7 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import { Typography, Layout, Button, Space, Modal, Skeleton } from 'antd';
-import { currentAccountLoader, accountsList } from '../../selectors/PersonalAreaSelectors'
+import {useSelector } from 'react-redux';
+import { Typography, Layout, Space, Skeleton } from 'antd';
+import { currentAccountLoader, currentAccountBalanceSelector } from '../../selectors/PersonalAreaSelectors'
 import {DeleteAccountButton} from './DeleteAccountButton';
 import {CreateTemplateButton} from './CreateTemplateButton';
 import {PaymentButton} from './PaymentButton/';
@@ -15,6 +15,7 @@ const { Text } = Typography;
 export default (props) => {
     const { account, userId } = props;
     const loader = useSelector(currentAccountLoader);
+    const balance = useSelector(currentAccountBalanceSelector);
 
     if (loader)
         return <Content><Skeleton active /></Content>
@@ -24,7 +25,7 @@ export default (props) => {
                 account && <div className="PersonalAreaAccountCard_content">
                 <div>
                     <Text>Счет №: {account.account_number}</Text>
-                    <Text type="secondary">Баланс: {account.account_balance}</Text>
+                    <Text type="secondary">Баланс: {balance}</Text>
                 </div>
                 <div>
                     <Space size='middle'>

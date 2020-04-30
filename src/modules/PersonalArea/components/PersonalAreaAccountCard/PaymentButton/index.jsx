@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PaymentForm from './PaymentForm';
-import {Button, Modal, Drawer } from 'antd';
-import {formValueSelector, paymentAccountLoaderSelector, paymentAccountModalShowSelector} from './../../../selectors/PersonalAreaSelectors';
+import {Button, Drawer } from 'antd';
+import { paymentAccountModalShowSelector} from './../../../selectors/PersonalAreaSelectors';
 import { paymentAccountLoader, paymentAccountModalHide, paymentAccountModalShow } from '../../../actions/';
 import {reset} from 'redux-form';
 
@@ -11,7 +11,6 @@ export const PaymentButton = (props) => {
     const visible = useSelector(paymentAccountModalShowSelector);
     const handleCancel = () => {
         dispatch(paymentAccountModalHide());
-        dispatch(reset('paymentForm'));
     }
     const onClick = () => {
         dispatch(paymentAccountModalShow())
@@ -22,6 +21,8 @@ export const PaymentButton = (props) => {
         }));
         dispatch(reset('paymentForm'));
     }
+
+    
     return <div>
             <Button onClick={onClick}>ПЛАТЕЖ</Button>
             <Drawer
