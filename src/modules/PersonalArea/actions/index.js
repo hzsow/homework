@@ -48,6 +48,14 @@ export const PAYMENT_ACCOUNT_SUCCESS = 'PAYMENT_ACCOUNT_SUCCESS';
 export const PAYMENT_ACCOUNT_ERROR = 'PAYMENT_ACCOUNT_ERROR';
 export const PAYMENT_ACCOUNT_MODAL_SHOW = 'PAYMENT_ACCOUNT_MODAL_SHOW';
 export const PAYMENT_ACCOUNT_MODAL_HIDE = 'PAYMENT_ACCOUNT_MODAL_HIDE';
+export const CREATE_TEMPLATE_LOADER = 'CREATE_TEMPLATE_LOADER';
+export const CREATE_TEMPLATE_SUCCESS = 'CREATE_TEMPLATE_SUCCESS';
+export const CREATE_TEMPLATE_ERROR = 'CREATE_TEMPLATE_ERROR';
+export const CREATE_TEMPLATE_MODAL_SHOW = 'CREATE_TEMPLATE_MODAL_SHOW';
+export const CREATE_TEMPLATE_MODAL_HIDE = 'CREATE_TEMPLATE_MODAL_HIDE';
+export const GET_TEMPLATE_LOADER = 'GET_TEMPLATE_LOADER';
+export const GET_TEMPLATE_SUCCESS = 'GET_TEMPLATE_SUCCESS';
+export const GET_TEMPLATE_ERROR = 'GET_TEMPLATE_ERROR';
 export const GET_USER = 'GET_USER'
 
 export const getUser = ({userId}) => {
@@ -325,5 +333,48 @@ export const paymentAccountModalHide = () => {
 export const paymentAccountModalShow = () => {
   return {
     type: PAYMENT_ACCOUNT_MODAL_SHOW
+  }
+}
+export const createTemplateLoader = ({payload}) => {
+  return {
+    type: CREATE_TEMPLATE_LOADER,
+    payload
+  }
+}
+export const createTemplateSuccess = () => {
+  return {
+    type: CREATE_TEMPLATE_SUCCESS
+  }
+}
+export const createTemplateError = () => {
+  return {
+    type: CREATE_TEMPLATE_ERROR
+  }
+}
+export const createTemplateModalHide = () => {
+  return {
+    type: CREATE_TEMPLATE_MODAL_HIDE
+  }
+}
+export const createTemplateModalShow = () => {
+  return {
+    type: CREATE_TEMPLATE_MODAL_SHOW
+  }
+}
+export const getTemplateLoader = (id) => {
+  return {
+    type: GET_TEMPLATE_LOADER,
+    id
+  }
+}
+export const getTemplateSuccess = (payload) => {
+  return {
+    type: GET_TEMPLATE_SUCCESS,
+    payload
+  }
+}
+export const getTemplateError = () => {
+  return {
+    type: GET_TEMPLATE_ERROR
   }
 }

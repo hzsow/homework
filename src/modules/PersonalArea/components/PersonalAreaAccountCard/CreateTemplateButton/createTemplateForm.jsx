@@ -4,8 +4,8 @@ import { AInput } from "../../../../../common/combineAntd";
 import { required, normalizeValue, normalizeAccount, email } from '../../../validators/PersonalAreaValidators'
 import { Button } from 'antd';
 
-const PaymentForm = React.memo((props) => {
-  const { handleSubmit, submitting } = props;
+const CreateTemplateForm = React.memo((props) => {
+  const { handleSubmit, pristine, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <Field label="Номер счета" name="accountNumber" validate={[required]} normalize={normalizeAccount} component={AInput} placeholder="Введите номер счета" hasFeedback/>
@@ -14,12 +14,11 @@ const PaymentForm = React.memo((props) => {
       <Field label="Email получателя" name="receiverEmail" validate={[required, email]} component={AInput} placeholder="Введите email получателя" hasFeedback/>
       <Field label="Назначение платежа" name="paymentPurpose" validate={[required]} component={AInput} placeholder="Введите назначение платежа" hasFeedback/>
       <Field label="Сумма платежа" name="paymentValue" validate={[required]} normalize={normalizeValue} component={AInput} placeholder="Введите сумму платежа" hasFeedback/>
-      <Button type="primary" disabled={submitting} htmlType="submit">
-        Оплатить
+      <Button type="primary" disabled={pristine || submitting} htmlType="submit">
+        Создать шаблон
       </Button>
     </form>
   );
 })
 
-
-export default reduxForm({form: 'paymentForm',enableReinitialize: true })(PaymentForm)
+export default reduxForm({form: 'createTemplateForm'})(CreateTemplateForm)

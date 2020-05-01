@@ -61,3 +61,17 @@ export const loginApiRequest = (email, password) => {
 export const deleteUserProfileRequest = (userId) => {
     return axios.delete(`http://localhost:3051/users/${userId}`)
 }
+export const createTemplateRequest = (id, values) => {
+    return axios.post(`http://localhost:3051/templates`,{
+        ...values,
+        id
+    })
+}
+export const getTemplateRequest = (id) => {
+    return axios.get(`http://localhost:3051/templates/${id}`)
+}
+export const changeTemplateRequest = (id, values) => {
+    return axios.patch(`http://localhost:3051/templates/${id}`,{
+        ...values
+    })
+}

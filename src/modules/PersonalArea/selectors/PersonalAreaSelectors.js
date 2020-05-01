@@ -10,6 +10,7 @@ const form = state => state.form;
 const changeUserPassword = state => state.changeUserPassword;  
 const changeUserProfile = state => state.changeUserProfile;  
 const paymentAccount = state => state.paymentAccount;  
+const createTemplate = state => state.createTemplate;  
 
 export const formValueSelector = createSelector(form, form => form);
 export const accountsList = createSelector(accounts, accounts => accounts.accounts);
@@ -40,6 +41,8 @@ export const changeUserProfileModalShowSelector = createSelector(changeUserProfi
 export const changeUserProfileLoaderSelector = createSelector(changeUserProfile, store => store.loader);
 export const paymentAccountLoaderSelector = createSelector(paymentAccount, store => store.loader);
 export const paymentAccountModalShowSelector = createSelector(paymentAccount, store => store.isModalShow);
+export const createTemplateModalShowSelector = createSelector(createTemplate, store => store.isModalShow);
+export const templateSelector = createSelector(createTemplate, store => store.template);
 
 export const checkAccountBalance = (value) => {
     if(!value)
