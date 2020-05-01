@@ -27,15 +27,22 @@ export const transferAccountRequest = (account_number, value) => {
         account_balance: value 
     });
 }
-export const historyRequest = (account_number, type, date, value) => {
-    return axios.patch(`http://localhost:3051/history`, {
-        id: account_number,
-        data: {
-        type,
-        date,
-        value
-        } 
+export const setHistoryRequest = (id, values) => {
+    return axios.patch(`http://localhost:3051/history/${id}`, {
+        data: values 
     });
+}
+export const setNewHistoryRequest = (id) => {
+    return axios.post(`http://localhost:3051/history`, {
+        id,
+        data: null 
+    });
+}
+export const deleteHistoryRequest = (id) => {
+    return axios.delete(`http://localhost:3051/history/${id}`);
+}
+export const getHistoryRequest = (id) => {
+    return axios.get(`http://localhost:3051/history/${id}`)
 }
 
 export const changeUserPasswordRequest = (userId, password) => {

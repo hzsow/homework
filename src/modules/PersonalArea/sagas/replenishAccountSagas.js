@@ -1,9 +1,10 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { replenishAccountRequest, historyRequest } from "./apiRequests";
+import { replenishAccountRequest, setHistoryRequest, getHistoryRequest } from "./apiRequests";
 import { REPLENISH_ACCOUNT_LOADER,
   replenishAccountSuccess,
   replenishAccountError,
-  isAccountsListReplenishAccount
+  isAccountsListReplenishAccount,
+  historyObject
 } from "../actions";
 import {message} from 'antd';
 
@@ -14,7 +15,8 @@ function* replenishAccountFlow(action) {
     yield delay(500);
     yield put(replenishAccountSuccess(response.data));
     yield put(isAccountsListReplenishAccount(value, uuid));
-    //yield call(historyRequest, id, "Пополнение",  Date().slice(0,10).toString(), value);
+    const history = yield call(getHistoryRequest, id);
+    yield call(setHistoryRequest, id, historyObject(history.data.data, "Пополнение", new Date().toLocaleString(), parseFloat(value)));
     message.success('Пополнение успешно', 1.5)
   } catch (error) {
     yield put(replenishAccountError(error));

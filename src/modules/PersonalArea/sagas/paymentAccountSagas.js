@@ -1,8 +1,9 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { transferAccountRequest, getAccountsRequest, replenishAccountRequest } from "./apiRequests";
+import { transferAccountRequest, getAccountsRequest, replenishAccountRequest, getHistoryRequest, setHistoryRequest } from "./apiRequests";
 import { PAYMENT_ACCOUNT_LOADER,
   paymentAccountSuccess,
   paymentAccountError,
+  historyObject
 } from "../actions";
 import {message} from 'antd';
 
@@ -15,6 +16,8 @@ function* paymentAccountFlow(action) {
     yield call(replenishAccountRequest, currentAccount, parseFloat(currentBalance)-parseFloat(paymentValue))
     yield delay(500);
     yield put(paymentAccountSuccess());
+    const history = yield call(getHistoryRequest, currentAccount);
+    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, "Платеж", new Date().toLocaleString(), parseFloat(paymentValue)));
     message.success('Платеж совершен', 1.5)
     window.location.reload();
   } catch (error) {

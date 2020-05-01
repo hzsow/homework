@@ -17,10 +17,10 @@ export const PersonalAreaPage = () => {
     const currentAccount = useSelector(currentAccountSelector);
     const userId = localStorage.getItem('userId');
     // console.log(currentAccount)     
-    console.log(useSelector(state => state))
+    // console.log(useSelector(state => state))
     useEffect(() => {
-        dispatch(getUser({userId}));
-        dispatch(isAccountsListLoader({userId}));
+        dispatch(getUser());
+        dispatch(isAccountsListLoader());
     }, [])
       
     return(

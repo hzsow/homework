@@ -1,8 +1,9 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { transferAccountRequest, getAccountsRequest, replenishAccountRequest } from "./apiRequests";
+import { transferAccountRequest, getAccountsRequest, replenishAccountRequest, getHistoryRequest, setHistoryRequest } from "./apiRequests";
 import { TRANSFER_ACCOUNT_LOADER,
   transferAccountSuccess,
   transferAccountError,
+  historyObject
 } from "../actions";
 import {message} from 'antd';
 
@@ -15,6 +16,8 @@ function* transferAccountFlow(action) {
     yield call(replenishAccountRequest, currentAccount, parseFloat(currentAccountValue)-parseFloat(value))
     yield delay(500);
     yield put(transferAccountSuccess());
+    const history = yield call(getHistoryRequest, currentAccount);
+    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, `Перевод на счет ${accountNumber}`, new Date().toLocaleString(), parseFloat(value)));
     message.success('Перевод прошел успешно', 1.5)
     window.location.reload();
   } catch (error) {

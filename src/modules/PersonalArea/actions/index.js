@@ -57,7 +57,9 @@ export const GET_TEMPLATE_LOADER = 'GET_TEMPLATE_LOADER';
 export const GET_TEMPLATE_SUCCESS = 'GET_TEMPLATE_SUCCESS';
 export const GET_TEMPLATE_ERROR = 'GET_TEMPLATE_ERROR';
 export const GET_USER = 'GET_USER'
-
+export const ACCOUNT_HISTORY_LOADER = 'ACCOUNT_HISTORY_LOADER';
+export const ACCOUNT_HISTORY_SUCCESS = 'ACCOUNT_HISTORY_SUCCESS';
+export const ACCOUNT_HISTORY_ERROR = 'ACCOUNT_HISTORY_ERROR';
 export const getUser = ({userId}) => {
   return {
     type: GET_USER,
@@ -106,7 +108,7 @@ export const isAccountsListDeleteAccount = (uuid) => {
     uuid
   }
 }
-export const setCurrentAccountSuccess = ({value}) => {
+export const setCurrentAccountSuccess = (value) => {
   return {
     type: SET_CURRENT_ACCOUNT_SUCCESS,
     value
@@ -376,5 +378,35 @@ export const getTemplateSuccess = (payload) => {
 export const getTemplateError = () => {
   return {
     type: GET_TEMPLATE_ERROR
+  }
+}
+
+export const historyObject = (array, type, date, value) => {
+  const newObject = {
+    type,
+    date,
+    value,
+    key: date
+  }
+  if (array) 
+    return [ newObject, ...array ];
+  return [ newObject ]
+}
+
+export const accountHistoryLoader = (id) => {
+  return {
+    type: ACCOUNT_HISTORY_LOADER,
+    id
+  }
+}
+export const accountHistorySuccess = (payload) => {
+  return {
+    type: ACCOUNT_HISTORY_SUCCESS,
+    payload
+  }
+}
+export const accountHistoryError = () => {
+  return {
+    type: ACCOUNT_HISTORY_ERROR
   }
 }

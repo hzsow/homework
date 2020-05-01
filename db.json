@@ -32,99 +32,93 @@
   "accounts": [
     {
       "userId": "1",
-      "account_balance": 1580.5,
-      "account_number": 4541103979,
-      "id": 4541103979
-    },
-    {
-      "userId": "1",
-      "account_balance": 3182,
-      "account_number": 4129216088,
-      "id": 4129216088
-    },
-    {
-      "userId": "4",
-      "account_balance": 123,
-      "account_number": 4542075853,
-      "id": 4542075853
-    },
-    {
-      "userId": "4",
-      "account_balance": 0,
-      "account_number": 4129965144,
-      "id": 4129965144
-    },
-    {
-      "userId": "5",
-      "account_balance": 0,
-      "account_number": 4201260068,
-      "id": 4201260068
-    },
-    {
-      "userId": "5",
-      "account_balance": 123,
-      "account_number": 4102180328,
-      "id": 4102180328
-    },
-    {
-      "userId": "1",
-      "account_balance": 13232234,
-      "account_number": 4371716502,
-      "id": 4371716502
+      "account_balance": 39697571,
+      "account_number": 4119430015,
+      "id": 4119430015
     },
     {
       "userId": "1",
       "account_balance": 0,
-      "account_number": 4212216422,
-      "id": 4212216422
+      "account_number": 4999255969,
+      "id": 4999255969
     }
   ],
-  "history": [],
-  "templates": [
+  "history": [
     {
-      "accountNumber": 4245245242,
-      "paymentName": "Ололо епта",
-      "receiverName": "мне",
-      "receiverEmail": "kalimgulovartur@gmail.com",
-      "paymentPurpose": "Хз",
-      "paymentValue": "500.45",
-      "id": 4245245242
+      "id": 4119430015,
+      "data": [
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:21:43",
+          "value": 100,
+          "key": "01.05.2020, 19:21:43"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:21:40",
+          "value": 100,
+          "key": "01.05.2020, 19:21:40"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:21:37",
+          "value": 100,
+          "key": "01.05.2020, 19:21:37"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:21:28",
+          "value": 13232234,
+          "key": "01.05.2020, 19:21:28"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:20:07",
+          "value": 123,
+          "key": "01.05.2020, 19:20:07"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:20:04",
+          "value": 123,
+          "key": "01.05.2020, 19:20:04"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 19:20:00",
+          "value": 123,
+          "key": "01.05.2020, 19:20:00"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 18:54:25",
+          "value": 13232234,
+          "key": "01.05.2020, 18:54:25"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 18:54:16",
+          "value": 13232234,
+          "key": "01.05.2020, 18:54:16"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 18:53:57",
+          "value": 100,
+          "key": "01.05.2020, 18:53:57"
+        },
+        {
+          "type": "Пополнение",
+          "date": "01.05.2020, 18:53:54",
+          "value": 100,
+          "key": "01.05.2020, 18:53:54"
+        }
+      ]
     },
     {
-      "accountNumber": "4 245 245 243",
-      "paymentName": "Ололо еп",
-      "receiverName": "мне",
-      "receiverEmail": "kalimgulovartur@gmail.com",
-      "paymentPurpose": "Хзp",
-      "paymentValue": "500.4",
-      "id": 4541103979
-    },
-    {
-      "accountNumber": "4 245 245 242",
-      "paymentName": "Ололо епта2",
-      "receiverName": "мне2",
-      "receiverEmail": "kalimgulovartur@gmail.com",
-      "paymentPurpose": "Хзз",
-      "paymentValue": "123",
-      "id": 4129216088
-    },
-    {
-      "accountNumber": "4 245 245 242",
-      "paymentName": "Ололо",
-      "receiverName": "мне",
-      "paymentPurpose": "Хз",
-      "receiverEmail": "kalimgulovartur@gmail.com",
-      "paymentValue": "500.45",
-      "id": 4371716502
-    },
-    {
-      "accountNumber": "4 542 075 853",
-      "paymentName": "dsfsdfs",
-      "receiverName": "sdf",
-      "receiverEmail": "kalimgulovartur@gmail.com",
-      "paymentPurpose": "Хзp",
-      "paymentValue": "500.45",
-      "id": 4212216422
+      "id": 4999255969,
+      "data": null
     }
-  ]
+  ],
+  "templates": []
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector} from 'react-redux';
 import { Layout } from 'antd';
-import { Table, Tag } from 'antd';
+import { Table } from 'antd';
+import { accountHistoryDataSelector, accountHistoryLoaderSelector} from '../../selectors/PersonalAreaSelectors';
 
 const { Content } = Layout;
 
@@ -17,23 +19,16 @@ const columns = [
   },
   {
     title: 'Сумма',
-    dataIndex: 'summ',
-    key: 'summ',
-  },
-];
-
-const data = [
-  {
-    key: '1',
-    type: 'Перевод',
-    date: '29.04.2020 15:00',
-    summ: 5000,
+    dataIndex: 'value',
+    key: 'value',
   },
 ];
 
 
 export default () => {
+  const data = useSelector(accountHistoryDataSelector);
+  const loader = useSelector(accountHistoryLoaderSelector);
     return(
-        <Content><Table columns={columns} dataSource={data} /></Content>
+        <Content><Table columns={columns} pagination={{pageSize: 5, position: ["topCenter"]}} dataSource={data} loading={loader} /></Content>
     )
 }

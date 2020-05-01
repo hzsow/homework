@@ -15,8 +15,10 @@ import changeUserProfileReducer from './modules/PersonalArea/reducers/changeUser
 import deleteUserProfileReducer from './modules/PersonalArea/reducers/deleteUserProfileReducer';
 import paymentAccountReducer from './modules/PersonalArea/reducers/paymentAccountReducer';
 import createTemplateReducer from './modules/PersonalArea/reducers/createTemplateReducer';
+import accountHistoryReducer from './modules/PersonalArea/reducers/accountHistoryReducer';
 
 export const reducers = combineReducers({
+    accountHistory: accountHistoryReducer,
     createTemplate: createTemplateReducer,
     paymentAccount: paymentAccountReducer,
     deleteUserProfile: deleteUserProfileReducer,

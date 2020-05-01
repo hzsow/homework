@@ -85,10 +85,9 @@ export const userModerationError = () => {
     type: USER_MODERATION_ERROR, 
   }
 }
-export const getUser = ({userId}) => {
+export const getUser = () => {
   return { 
-    type: GET_USER, 
-    userId
+    type: GET_USER,
   }
 }
 export const getUserSuccess = ({email, first, isClient}) => {

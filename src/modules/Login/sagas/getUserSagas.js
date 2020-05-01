@@ -3,9 +3,9 @@ import {getUserApiRequest, setUserModeratedApiRequest} from './apiRequests';
 import { GET_USER, getUserSuccess, getUserError, userModerationLoader, userModerationError, userModerationSuccess } from '../actions';
 import { message } from 'antd';
 
-function* getUserFlow (action) {
+function* getUserFlow () {
   try {
-    const { userId } = action;
+    const userId = localStorage.getItem('userId');
     const response = yield call(getUserApiRequest, userId);
     yield delay(500);
     yield put(getUserSuccess(response.data))

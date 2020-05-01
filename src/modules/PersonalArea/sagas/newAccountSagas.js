@@ -1,10 +1,10 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { newAccountRequest } from "./apiRequests";
+import { newAccountRequest, setNewHistoryRequest } from "./apiRequests";
 import { NEW_ACCOUNT_LOADER,
   newAccountSuccess,
   newAccountError,
   isAccountsListNewAccount,
-  setCurrentAccountIndex
+  setCurrentAccountIndex,
 } from "../actions";
 import { v4 as uuidv4 } from 'uuid';
 import { message } from 'antd'
@@ -25,6 +25,7 @@ function* newAccountFlow(action) {
       account_balance: 0
     }));
     yield put(setCurrentAccountIndex(length));
+    yield call(setNewHistoryRequest, account_number);
     message.success('Счет открыт успешно!', 1.5)
   } catch (error) {
     yield put(newAccountError(error));

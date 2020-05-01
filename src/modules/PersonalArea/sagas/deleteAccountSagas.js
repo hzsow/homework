@@ -1,5 +1,5 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { deleteAccountRequest } from "./apiRequests";
+import { deleteAccountRequest, deleteHistoryRequest } from "./apiRequests";
 import { DELETE_ACCOUNT_LOADER, 
   isAccountsListDeleteAccount,
   deleteAccountSuccess,
@@ -12,6 +12,7 @@ function* deleteAccountFlow(action) {
   try {
     const { uuid } = action;
     const response = yield call(deleteAccountRequest, uuid);
+    yield call(deleteHistoryRequest, uuid)
     yield delay(500);
     yield put(deleteAccountSuccess(response.data));
     yield put(setCurrentAccountIndex(0));
