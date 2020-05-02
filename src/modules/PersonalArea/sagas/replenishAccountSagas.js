@@ -4,7 +4,8 @@ import { REPLENISH_ACCOUNT_LOADER,
   replenishAccountSuccess,
   replenishAccountError,
   isAccountsListReplenishAccount,
-  historyObject
+  historyObject,
+  accountHistoryLoader
 } from "../actions";
 import {message} from 'antd';
 
@@ -16,7 +17,8 @@ function* replenishAccountFlow(action) {
     yield put(replenishAccountSuccess(response.data));
     yield put(isAccountsListReplenishAccount(value, uuid));
     const history = yield call(getHistoryRequest, id);
-    yield call(setHistoryRequest, id, historyObject(history.data.data, "Пополнение", new Date().toLocaleString(), parseFloat(value)));
+    yield call(setHistoryRequest, id, historyObject(history.data.data, "Пополнение", parseFloat(value)));
+    yield put(accountHistoryLoader(id));
     message.success('Пополнение успешно', 1.5)
   } catch (error) {
     yield put(replenishAccountError(error));

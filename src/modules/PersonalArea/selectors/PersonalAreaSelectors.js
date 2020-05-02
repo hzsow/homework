@@ -26,9 +26,12 @@ export const currentAccountValueSelector = createSelector(accounts, currentAccou
 export const currentAccountBalanceSelector = createSelector(accounts, currentAccount, (accounts, current) => {
     const account = accounts.accounts[current.currentAccount];
     if (account)
-        return checkAccountBalance(account.account_balance)
+    return checkAccountBalance(account.account_balance)
     return "0.00"
 });
+export const lastAccountSelector = createSelector(accounts, (accounts) => accounts.accounts[accounts.length-2]);
+export const lastAccountIdSelector = createSelector(accounts, (accounts) => accounts.accounts[accounts.accounts.length-1].id);
+export const lastAccountIndexSelector = createSelector(accounts, (accounts) => accounts.accounts.length-2);
 export const transferAccountLoaderSelector = createSelector(transferAccount, transfer => transfer.isTransferAccountLoader);
 export const transferAccountModalShow = createSelector(transferAccount, transfer => transfer.isModalShow);
 export const transferEachOtherAccountLoaderSelector = createSelector(transferEachOtherAccount, transfer => transfer.loader);
@@ -44,7 +47,7 @@ export const paymentAccountLoaderSelector = createSelector(paymentAccount, store
 export const paymentAccountModalShowSelector = createSelector(paymentAccount, store => store.isModalShow);
 export const createTemplateModalShowSelector = createSelector(createTemplate, store => store.isModalShow);
 export const templateSelector = createSelector(createTemplate, store => store.template);
-export const accountHistoryDataSelector = createSelector(accountHistory, store => store.history);
+export const accountHistoryDataSelector = createSelector(accountHistory, store => store.filteredHistory);
 export const accountHistoryLoaderSelector = createSelector(accountHistory, store => store.loader);
 
 

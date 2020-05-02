@@ -1,11 +1,13 @@
-import { call, put, takeEvery, delay } from "redux-saga/effects";
+import { call, put, takeEvery, delay, select } from "redux-saga/effects";
 import { deleteAccountRequest, deleteHistoryRequest } from "./apiRequests";
 import { DELETE_ACCOUNT_LOADER, 
   isAccountsListDeleteAccount,
   deleteAccountSuccess,
   deleteAccountError,
-  setCurrentAccountIndex
+  setCurrentAccountIndex,
+  accountHistoryLoader
 } from "../actions";
+import { lastAccountIdSelector, lastAccountIndexSelector } from '../selectors/PersonalAreaSelectors';
 import {message} from 'antd';
 
 function* deleteAccountFlow(action) {
@@ -15,8 +17,12 @@ function* deleteAccountFlow(action) {
     yield call(deleteHistoryRequest, uuid)
     yield delay(500);
     yield put(deleteAccountSuccess(response.data));
-    yield put(setCurrentAccountIndex(0));
+    const lastIndex = yield select(lastAccountIndexSelector);
+    yield put(setCurrentAccountIndex(lastIndex));
     yield put(isAccountsListDeleteAccount(uuid));
+    const lastId = yield select(lastAccountIdSelector);
+    yield put(accountHistoryLoader(lastId));
+    console.log(lastIndex, lastId)
     message.success('Счет закрыт', 1.5)
   } catch (error) {
     yield put(deleteAccountError(error));

@@ -3,7 +3,8 @@ import { transferAccountRequest, getAccountsRequest, replenishAccountRequest, ge
 import { TRANSFER_ACCOUNT_LOADER,
   transferAccountSuccess,
   transferAccountError,
-  historyObject
+  historyObject,
+  accountHistoryLoader
 } from "../actions";
 import {message} from 'antd';
 
@@ -17,9 +18,12 @@ function* transferAccountFlow(action) {
     yield delay(500);
     yield put(transferAccountSuccess());
     const history = yield call(getHistoryRequest, currentAccount);
-    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, `Перевод на счет ${accountNumber}`, new Date().toLocaleString(), parseFloat(value)));
+    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, `Перевод на счет ${accountNumber}`, parseFloat(value)));
+    const history2 = yield call(getHistoryRequest, accountNumber);
+    yield call(setHistoryRequest, accountNumber, historyObject(history2.data.data, `Зачисление со счета ${currentAccount}`, parseFloat(value)));
+    yield put(accountHistoryLoader(currentAccount))
     message.success('Перевод прошел успешно', 1.5)
-    window.location.reload();
+    // window.location.reload();
   } catch (error) {
     yield put(transferAccountError(error));
     message.error('Ошибка!', 2.5)

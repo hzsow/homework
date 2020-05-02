@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const ISACCOUNTSLIST_SUCCESS = 'ISACCOUNTSLIST_SUCCESS';
 export const ISACCOUNTSLIST_LOADER = 'ISACCOUNTSLIST_LOADER';
 export const ISACCOUNTSLIST_ERROR = 'ISACCOUNTSLIST_ERROR';
@@ -60,6 +62,7 @@ export const GET_USER = 'GET_USER'
 export const ACCOUNT_HISTORY_LOADER = 'ACCOUNT_HISTORY_LOADER';
 export const ACCOUNT_HISTORY_SUCCESS = 'ACCOUNT_HISTORY_SUCCESS';
 export const ACCOUNT_HISTORY_ERROR = 'ACCOUNT_HISTORY_ERROR';
+export const ACCOUNT_HISTORY_FILTER = 'ACCOUNT_HISTORY_FILTER';
 export const getUser = ({userId}) => {
   return {
     type: GET_USER,
@@ -381,7 +384,8 @@ export const getTemplateError = () => {
   }
 }
 
-export const historyObject = (array, type, date, value) => {
+export const historyObject = (array, type, value) => {
+const date = moment().format('YYYY.MM.DD, HH:mm:ss');
   const newObject = {
     type,
     date,
@@ -408,5 +412,11 @@ export const accountHistorySuccess = (payload) => {
 export const accountHistoryError = () => {
   return {
     type: ACCOUNT_HISTORY_ERROR
+  }
+}
+export const accountHistoryFilter = (payload) => {
+  return {
+    type: ACCOUNT_HISTORY_FILTER,
+    payload
   }
 }

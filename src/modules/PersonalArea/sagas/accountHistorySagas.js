@@ -9,7 +9,7 @@ function* accountHistoryFlow(action) {
   try {
     const { id } = action;
     const response = yield call(getHistoryRequest, id);
-    yield delay(500);
+    yield delay(250);
     yield put(accountHistorySuccess(response.data.data));
   } catch (error) {
     yield put(accountHistoryError(error));

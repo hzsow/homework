@@ -4,7 +4,8 @@ import { NEW_ACCOUNT_LOADER,
   newAccountSuccess,
   newAccountError,
   isAccountsListNewAccount,
-  setCurrentAccountIndex,
+  setCurrentAccountIndex, 
+  accountHistoryLoader
 } from "../actions";
 import { v4 as uuidv4 } from 'uuid';
 import { message } from 'antd'
@@ -26,6 +27,7 @@ function* newAccountFlow(action) {
     }));
     yield put(setCurrentAccountIndex(length));
     yield call(setNewHistoryRequest, account_number);
+    yield put(accountHistoryLoader(account_number));
     message.success('Счет открыт успешно!', 1.5)
   } catch (error) {
     yield put(newAccountError(error));

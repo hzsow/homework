@@ -8,7 +8,6 @@ import { isLoginSuccess, isLoginLoader } from './modules/Login/selectors/loginSe
 
 function App() {
   const token = localStorage.getItem('token');
-  const isLoader = useSelector(isLoginLoader, shallowEqual);
   return (
     <div className="App">
       <Router>
@@ -23,13 +22,13 @@ function App() {
           {!token && <Redirect from="*" to="/login"/>}
         </Switch>
       </Router>
+      <div id="vk_community_messages"></div>
     </div>
   );
 }
 
 const PrivateRoute = ({ children, ...rest }) => {
   const isAuth = useSelector(isLoginSuccess, shallowEqual);
-  const isLoader = useSelector(isLoginLoader, shallowEqual);
   const token = localStorage.getItem('token');
   return (
     <Route

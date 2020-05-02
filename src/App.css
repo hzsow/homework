@@ -137,3 +137,7 @@ background: rgba(59, 190, 255, 0.5);
 .ant-select-selection-search-input{
   text-align: left !important;
 }
+.custom-filter-dropdown{ 
+  min-width:  "20rem"; 
+  padding: 1.5rem 1rem; 
+}
