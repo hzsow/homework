@@ -9,10 +9,10 @@ import {message} from 'antd';
 
 function* changeUserProfileFlow(action) {
   try {
-    const { payload: { newFirstName, newEmail, confirmPassword, oldEmail }} = action;
+    const { payload: { newFirstName, newEmail, confirmPassword, oldEmail, imageUrl }} = action;
     const userId = localStorage.getItem('userId');
     yield call(loginApiRequest, oldEmail, confirmPassword);
-    yield call(changeUserProfileRequest, userId, newEmail, newFirstName);
+    yield call(changeUserProfileRequest, userId, newEmail, newFirstName, imageUrl);
     yield delay(500);
     yield put(changeUserProfileSuccess());
     yield put(getUser({userId}));

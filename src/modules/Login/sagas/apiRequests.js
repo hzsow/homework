@@ -13,7 +13,8 @@ export const signupApiRequest = (email, first, password) => {
         email,
         password,
         first,
-        isClient: false
+        isClient: false,
+        img: null
     })
 }
 export const getUserApiRequest = (userId) => {

@@ -42,6 +42,7 @@ export const CHANGE_USER_PROFILE_SUCCESS = 'CHANGE_USER_PROFILE_SUCCESS';
 export const CHANGE_USER_PROFILE_ERROR = 'CHANGE_USER_PROFILE_ERROR';
 export const CHANGE_USER_PROFILE_MODAL_SHOW = 'CHANGE_USER_PROFILE_MODAL_SHOW';
 export const CHANGE_USER_PROFILE_MODAL_HIDE = 'CHANGE_USER_PROFILE_MODAL_HIDE';
+export const CHANGE_USER_PROFILE_SET_AVATAR = 'CHANGE_USER_PROFILE_SET_AVATAR';
 export const DELETE_USER_PROFILE_LOADER = 'DELETE_USER_PROFILE_LOADER';
 export const DELETE_USER_PROFILE_SUCCESS = 'DELETE_USER_PROFILE_SUCCESS';
 export const DELETE_USER_PROFILE_ERROR = 'DELETE_USER_PROFILE_ERROR';
@@ -63,6 +64,7 @@ export const ACCOUNT_HISTORY_LOADER = 'ACCOUNT_HISTORY_LOADER';
 export const ACCOUNT_HISTORY_SUCCESS = 'ACCOUNT_HISTORY_SUCCESS';
 export const ACCOUNT_HISTORY_ERROR = 'ACCOUNT_HISTORY_ERROR';
 export const ACCOUNT_HISTORY_FILTER = 'ACCOUNT_HISTORY_FILTER';
+
 export const getUser = ({userId}) => {
   return {
     type: GET_USER,
@@ -297,6 +299,12 @@ export const changeUserProfileModalHide = () => {
 export const changeUserProfileModalShow = () => {
   return {
     type: CHANGE_USER_PROFILE_MODAL_SHOW
+  }
+}
+export const changeUserProfileSetAvatar = (payload) => {
+  return {
+    type: CHANGE_USER_PROFILE_SET_AVATAR,
+    payload
   }
 }
 export const deleteUserProfileLoader = () => {

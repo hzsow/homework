@@ -13,6 +13,7 @@ let initialState = {
     email: null,
     firstName: null,
     isModerated: false,
+    img: null,
     moderationLoader: false,
     moderationSuccess: false
 };
@@ -28,11 +29,13 @@ export default (state = initialState, action) => {
             draft.email = action.email;
             draft.firstName = action.firstName;
             draft.isModerated = action.isModerated;
+            draft.img = action.img;
         }
         if (action.type === GET_USER_ERROR){
             draft.userId = null;
             draft.email = null;
             draft.isModerated = false;
+            draft.img = null;
         }
         if (action.type === USER_MODERATION_LOADER){
             draft.moderationLoader = true;

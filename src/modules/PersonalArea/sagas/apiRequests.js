@@ -51,11 +51,12 @@ export const changeUserPasswordRequest = (userId, password) => {
         password,
     })
 }
-export const changeUserProfileRequest = (userId, email, first) => {
+export const changeUserProfileRequest = (userId, email, first, img) => {
     return axios.patch(`http://localhost:3051/users/${userId}`, 
     {
         email,
-        first 
+        first,
+        img
     })
 }
 export const loginApiRequest = (email, password) => {

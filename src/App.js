@@ -8,6 +8,7 @@ import { isLoginSuccess, isLoginLoader } from './modules/Login/selectors/loginSe
 
 function App() {
   const token = localStorage.getItem('token');
+  const loader = useSelector(isLoginLoader);
   return (
     <div className="App">
       <Router>

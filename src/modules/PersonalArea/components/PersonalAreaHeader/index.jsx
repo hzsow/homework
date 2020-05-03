@@ -4,7 +4,7 @@ import { Typography } from 'antd';
 import { PageHeader, Button } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
-import { accountsBalanceSelector } from '../../selectors/PersonalAreaSelectors';
+import { accountsBalanceSelector, changeUserProfileAvatarSelector } from '../../selectors/PersonalAreaSelectors';
 import {UserSettingsButton} from './UserSettingsButton/';
 const { Text } = Typography;
 
@@ -13,6 +13,7 @@ const { Text } = Typography;
 export default (props) => {
     const { user } = props;
     const { firstName } = user;
+    const avatar = useSelector(changeUserProfileAvatarSelector);
     const accountsBalance = useSelector(accountsBalanceSelector);
     const onClick = () =>{
         localStorage.removeItem('token');
@@ -29,7 +30,7 @@ export default (props) => {
             <Text key="5">{new Date().toDateString()}</Text>,
             <Text key="4" >{firstName}</Text>,
             <UserSettingsButton key="3" size={64} shape='circle' user={user} icon={<SettingOutlined />} />,
-            <Avatar key="2" size="large" icon={<UserOutlined />} />,
+            <Avatar key="2" size="large" src={avatar ? avatar : user.img} icon={ user.img ? null : <UserOutlined/>}  />,
             <Button key="1" shape='circle-outline' size='large' icon={<LogoutOutlined />} onClick={onClick}/>
           ]}> 
         </PageHeader>

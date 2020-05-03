@@ -5,50 +5,27 @@
       "password": "$2a$10$/r1NSsckkJlszqKzLVlIsuylzp71u8JBwUQXExojmHnLq7wSFEG8S",
       "first": "Артур",
       "isClient": true,
+      "img": "1.jpg",
       "id": 1
     },
     {
-      "email": "kalimgulovartur5@gmail.com",
-      "password": "$2a$10$TwMPUyJ0.dXLr6qaFyLgg.ffIQowD9HqROHBZGU7CrmvNvlW1CY/W",
-      "first": "asdasd",
+      "email": "petr@mail.com",
+      "password": "$2a$10$AeTUSO5EqACHqTokwNM6w.3zEX/TKCzBFeLc/mydNI56IpuS5KdVy",
+      "first": "Петя",
       "isClient": true,
-      "id": 3
+      "img": "v9OQUr3FpeE.jpg",
+      "id": 7
     },
     {
-      "email": "kalimgulovartur6@gmail.com",
-      "password": "$2a$10$np00NggBtLzgpm.s7ivWiu.q91LCz/SGIdqnvo9lDPxb4OgdeZN3q",
-      "first": "asdasd",
+      "email": "vasya@mail.com",
+      "password": "$2a$10$rNk67Am/JI599FYkOPF5Te8KB2kE6Y7xAKLu0N2g7UtwG4/ef1qEO",
+      "first": "Василий",
+      "img": "v9OQUr3FpeE.jpg",
       "isClient": true,
-      "id": 4
-    },
-    {
-      "email": "kalimgulovartur@gmail.com",
-      "password": "$2a$10$nh3RvIWptgPhoieapvIDG..7KmihSND/1yncr7ZxK5/k0T0lwx1tm",
-      "first": "Артур",
-      "isClient": true,
-      "id": 5
-    },
-    {
-      "email": "kalimgulovartur4@gmail.com",
-      "password": "$2a$10$1JytQKxG2rmULgNN2OxSy.zdwLmk9NSkcY6vFy6c3YcCgsEPl0e1K",
-      "first": "Артурка",
-      "isClient": true,
-      "id": 6
+      "id": 8
     }
   ],
   "accounts": [
-    {
-      "userId": "6",
-      "account_balance": 0,
-      "account_number": 4564805227,
-      "id": 4564805227
-    },
-    {
-      "userId": "6",
-      "account_balance": 13232234,
-      "account_number": 4069045450,
-      "id": 4069045450
-    },
     {
       "userId": "1",
       "account_balance": 13232580,
@@ -57,7 +34,7 @@
     },
     {
       "userId": "1",
-      "account_balance": 13225838,
+      "account_balance": 13439051.34,
       "account_number": 4626827578,
       "id": 4626827578
     },
@@ -72,6 +49,30 @@
       "account_balance": 100,
       "account_number": 4353359529,
       "id": 4353359529
+    },
+    {
+      "userId": "7",
+      "account_balance": 99.5,
+      "account_number": 4731722093,
+      "id": 4731722093
+    },
+    {
+      "userId": "7",
+      "account_balance": 123.5,
+      "account_number": 4064233493,
+      "id": 4064233493
+    },
+    {
+      "userId": "8",
+      "account_balance": 13232234,
+      "account_number": 4287320279,
+      "id": 4287320279
+    },
+    {
+      "userId": "8",
+      "account_balance": 0,
+      "account_number": 4238173834,
+      "id": 4238173834
     }
   ],
   "history": [
@@ -122,6 +123,12 @@
     {
       "id": 4626827578,
       "data": [
+        {
+          "type": "Пополнение",
+          "date": "2020.05.03, 13:25:19",
+          "value": 213213.34,
+          "key": "2020.05.03, 13:25:19"
+        },
         {
           "type": "Перевод на счет 4842312277",
           "date": "2020.05.02, 19:11:36",
@@ -181,7 +188,96 @@
           "key": "2020.05.02, 18:52:52"
         }
       ]
+    },
+    {
+      "id": 4731722093,
+      "data": [
+        {
+          "type": "Перевод на свой счет 4064233493",
+          "date": "2020.05.03, 13:29:31",
+          "value": 123.5,
+          "key": "2020.05.03, 13:29:31"
+        },
+        {
+          "type": "Зачисление со своего счета 4197576508",
+          "date": "2020.05.03, 13:28:11",
+          "value": 123,
+          "key": "2020.05.03, 13:28:11"
+        },
+        {
+          "type": "Перевод на свой счет 4731722093",
+          "date": "2020.05.03, 13:28:11",
+          "value": 123,
+          "key": "2020.05.03, 13:28:11"
+        },
+        {
+          "type": "Пополнение",
+          "date": "2020.05.03, 13:27:54",
+          "value": 123.76,
+          "key": "2020.05.03, 13:27:54"
+        }
+      ]
+    },
+    {
+      "id": 4064233493,
+      "data": [
+        {
+          "type": "Зачисление со своего счета 4731722093",
+          "date": "2020.05.03, 13:29:31",
+          "value": 123.5,
+          "key": "2020.05.03, 13:29:31"
+        },
+        {
+          "type": "Перевод на свой счет 4064233493",
+          "date": "2020.05.03, 13:29:31",
+          "value": 123.5,
+          "key": "2020.05.03, 13:29:31"
+        },
+        {
+          "type": "Зачисление со своего счета 4197576508",
+          "date": "2020.05.03, 13:28:11",
+          "value": 123,
+          "key": "2020.05.03, 13:28:11"
+        },
+        {
+          "type": "Перевод на свой счет 4731722093",
+          "date": "2020.05.03, 13:28:11",
+          "value": 123,
+          "key": "2020.05.03, 13:28:11"
+        },
+        {
+          "type": "Пополнение",
+          "date": "2020.05.03, 13:27:54",
+          "value": 123.76,
+          "key": "2020.05.03, 13:27:54"
+        }
+      ]
+    },
+    {
+      "id": 4287320279,
+      "data": [
+        {
+          "type": "Пополнение",
+          "date": "2020.05.03, 18:38:58",
+          "value": 13232234,
+          "key": "2020.05.03, 18:38:58"
+        }
+      ]
+    },
+    {
+      "id": 4238173834,
+      "data": null
     }
   ],
-  "templates": []
+  "templates": [
+    {
+      "accountNumber": "4 245 245 242",
+      "paymentName": "Ололо",
+      "receiverName": "мне",
+      "receiverEmail": "kalimgulovartur@gmail.com",
+      "paymentPurpose": "Назначение",
+      "paymentValue": "500.45",
+      "id": 4626827578
+    }
+  ]
 }

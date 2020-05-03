@@ -43,6 +43,7 @@ export const changeUserPasswordModalShowSelector = createSelector(changeUserPass
 export const changeUserPasswordLoaderSelector = createSelector(changeUserPassword, store => store.loader);
 export const changeUserProfileModalShowSelector = createSelector(changeUserProfile, store => store.isModalShow);
 export const changeUserProfileLoaderSelector = createSelector(changeUserProfile, store => store.loader);
+export const changeUserProfileAvatarSelector = createSelector(changeUserProfile, store => store.img);
 export const paymentAccountLoaderSelector = createSelector(paymentAccount, store => store.loader);
 export const paymentAccountModalShowSelector = createSelector(paymentAccount, store => store.isModalShow);
 export const createTemplateModalShowSelector = createSelector(createTemplate, store => store.isModalShow);
