@@ -20,7 +20,7 @@ function* transferEachOtherAccountFlow(action) {
     yield put(transferEachOtherAccountSuccess());
     const history = yield call(getHistoryRequest, currentAccount);
     yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, `Перевод на свой счет ${receiverAccount}`, parseFloat(value)));
-    const history2 = yield call(getHistoryRequest, currentAccount);
+    const history2 = yield call(getHistoryRequest, receiverAccount);
     yield call(setHistoryRequest, receiverAccount, historyObject(history2.data.data, `Зачисление со своего счета ${currentAccount}`, parseFloat(value)));
     yield put(accountHistoryLoader(currentAccount));
     message.success('Перевод прошел успешно', 1.5)

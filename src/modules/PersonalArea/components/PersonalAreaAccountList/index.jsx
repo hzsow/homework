@@ -35,7 +35,7 @@ export default (props) => {
             {loader && <Card loading={true}/>}
             {!loader &&
               accounts.map((account, index) => {
-                return <Account key={index} data={account} currentId={current.id} index={index} />
+                return <Account key={index} data={account} currentId={current ? current.id : null} index={index} />
               })
             }
             <Tooltip title="Открыть новый счет">

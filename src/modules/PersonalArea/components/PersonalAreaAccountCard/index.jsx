@@ -38,7 +38,7 @@ export default (props) => {
                 </div>
                 <div>
                     <Space size='large'>
-                        <StatementButton/>
+                        <StatementButton account={account}/>
                         <CreateTemplateButton id={account.id}/>
                         <DeleteAccountButton uuid={account.id} userId={userId} balance={account.account_balance}/>
                     </Space>

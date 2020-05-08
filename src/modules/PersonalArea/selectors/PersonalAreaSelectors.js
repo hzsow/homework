@@ -26,7 +26,7 @@ export const currentAccountValueSelector = createSelector(accounts, currentAccou
 export const currentAccountBalanceSelector = createSelector(accounts, currentAccount, (accounts, current) => {
     const account = accounts.accounts[current.currentAccount];
     if (account)
-    return checkAccountBalance(account.account_balance)
+        return checkAccountBalance(account.account_balance);
     return "0.00"
 });
 export const lastAccountSelector = createSelector(accounts, (accounts) => accounts.accounts[accounts.length-2]);

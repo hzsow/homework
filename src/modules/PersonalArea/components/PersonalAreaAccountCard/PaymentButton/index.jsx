@@ -27,7 +27,8 @@ export const PaymentButton = (props) => {
                     ...values,
                     currentAccount: id,
                     currentBalance: balance,
-                    accountNumber: values.accountNumber.replace(/\s/g, '')
+                    accountNumber: values.accountNumber.replace(/\s/g, ''),
+                    useTemplate
                 }
             }));
             dispatch(reset('paymentForm'));
