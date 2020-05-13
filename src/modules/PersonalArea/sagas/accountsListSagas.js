@@ -24,7 +24,6 @@ function* accountsListFlow(action) {
   } catch (error) {
     yield put(isAccountsListError(error));
     yield put(setCurrentAccountError());
-    console.log(error);
   }
 }
 

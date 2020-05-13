@@ -14,6 +14,7 @@ let initialState = {
     firstName: null,
     isModerated: false,
     img: null,
+    status: false,
     moderationLoader: false,
     moderationSuccess: false
 };
@@ -24,17 +25,20 @@ export default (state = initialState, action) => {
             draft.userId = action.userId;
             draft.email = null;
             draft.isModerated = false;
+            draft.status = false;
         }
         if (action.type === GET_USER_SUCCESS){
             draft.email = action.email;
             draft.firstName = action.firstName;
             draft.isModerated = action.isModerated;
             draft.img = action.img;
+            draft.status = action.status;
         }
         if (action.type === GET_USER_ERROR){
             draft.userId = null;
             draft.email = null;
             draft.isModerated = false;
+            draft.status = false;
             draft.img = null;
         }
         if (action.type === USER_MODERATION_LOADER){
@@ -44,10 +48,12 @@ export default (state = initialState, action) => {
         if (action.type === USER_MODERATION_SUCCESS){
             draft.moderationLoader = false;
             draft.moderationSuccess = true;
+            draft.isModerated = true;
         }
         if (action.type === USER_MODERATION_ERROR){
             draft.moderationLoader = false;
             draft.moderationSuccess = false;
+            draft.isModerated = false;
         }
     })
 }

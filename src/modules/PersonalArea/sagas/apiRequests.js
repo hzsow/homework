@@ -1,85 +1,72 @@
 import axios from 'axios';
 
+
 export const accountsListRequest = (userId) => {
-    return axios.get(`http://localhost:3051/users/${userId}/accounts`)
+    return axios.get(`api/AccountsModels/${userId}`,{})
 }
-export const newAccountRequest = (userId, id, account_number) => {
-    return axios.post(`http://localhost:3051/accounts`,{
-        userId,
-        account_balance: 0,
-        account_number,
-        id: account_number
+export const newAccountRequest = (userId) => {
+    return axios.post(`api/AccountsModels/`,{
+        userId 
     })
 }
 export const deleteAccountRequest = (id) => {
-    return axios.delete(`http://localhost:3051/accounts/${id}`)
+    return axios.delete(`api/AccountsModels/${id}`)
 }
-export const replenishAccountRequest = (id, value) => {
-    return axios.patch(`http://localhost:3051/accounts/${id}`,{
-        account_balance: value
+export const replenishAccountRequest = (AccountNumber, Value) => {
+    return axios.post(`api/ReplenishAccounts/`,{
+        AccountNumber,
+        Value
     })
 }
-export const getAccountsRequest = () => {
-    return axios.get(`http://localhost:3051/accounts/`)
-}
-export const transferAccountRequest = (account_number, value) => {
-    return axios.patch(`http://localhost:3051/accounts/${account_number}`,{
-        account_balance: value 
+export const transferAccountRequest = (AccountNumberCurrent, AccountNumberReceiver, Value) => {
+    return axios.post(`api/TransferAccounts/`,{
+        AccountNumberCurrent,
+        AccountNumberReceiver,
+        Value 
     });
 }
-export const setHistoryRequest = (id, values) => {
-    return axios.patch(`http://localhost:3051/history/${id}`, {
-        data: values 
+export const paymentAccountRequest = (AccountNumberCurrent, AccountNumberReceiver, Value, UseTemplate) => {
+    return axios.post(`api/PaymentAccounts`,{
+        AccountNumberCurrent,
+        AccountNumberReceiver,
+        Value,
+        UseTemplate 
     });
 }
-export const setNewHistoryRequest = (id) => {
-    return axios.post(`http://localhost:3051/history`, {
-        id,
-        data: null 
-    });
-}
-export const deleteHistoryRequest = (id) => {
-    return axios.delete(`http://localhost:3051/history/${id}`);
-}
-export const getHistoryRequest = (id) => {
-    return axios.get(`http://localhost:3051/history/${id}`)
-}
-
-export const changeUserPasswordRequest = (userId, password) => {
-    return axios.patch(`http://localhost:3051/users/${userId}`, 
+export const changeUserPasswordRequest = (email, oldPassword, newPassword) => {
+    return axios.post(`changePassword`, 
     {
+        email,
+        oldPassword,
+        newPassword
+    })
+}
+export const changeUserProfileRequest = (oldEmail, newEmail, password, firstName, fileName) => {
+    return axios.post( `updateUser`,
+    {
+        oldEmail,
+        newEmail,
         password,
-    })
-}
-export const changeUserProfileRequest = (userId, email, first, img) => {
-    return axios.patch(`http://localhost:3051/users/${userId}`, 
-    {
-        email,
-        first,
-        img
-    })
-}
-export const loginApiRequest = (email, password) => {
-    return axios.post("http://localhost:3051/login", 
-    {
-        email,
-        password
+        firstName,
+        fileName
     })
 }
 export const deleteUserProfileRequest = (userId) => {
-    return axios.delete(`http://localhost:3051/users/${userId}`)
+    return axios.delete(`deleteUser/${userId}`)
 }
-export const createTemplateRequest = (id, values) => {
-    return axios.post(`http://localhost:3051/templates`,{
-        ...values,
-        id
+export const createTemplateRequest = (values) => {
+    return axios.post(`api/TemplatesModels/`,{
+        ...values
     })
 }
 export const getTemplateRequest = (id) => {
-    return axios.get(`http://localhost:3051/templates/${id}`)
+    return axios.get(`api/TemplatesModels/${id}`)
 }
 export const changeTemplateRequest = (id, values) => {
-    return axios.patch(`http://localhost:3051/templates/${id}`,{
+    return axios.put(`api/TemplatesModels/${id}`,{
         ...values
     })
+}
+export const getHistoryRequest = (id) =>{
+    return axios.get(`api/HistoryModels/${id}`)
 }

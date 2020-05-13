@@ -8,7 +8,7 @@ const CreateTemplateForm = React.memo((props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <Field label="Номер счета" name="accountNumber" validate={[required]} normalize={normalizeAccount} component={AInput} placeholder="Введите номер счета" hasFeedback/>
+      <Field label="Номер счета" name="accountNumberReceiver" validate={[required]} normalize={normalizeAccount} component={AInput} placeholder="Введите номер счета" hasFeedback/>
       <Field label="Название платежа" name="paymentName" validate={[required]} component={AInput} placeholder="Введите название платежа" hasFeedback/>
       <Field label="На кого платеж" name="receiverName" validate={[required]} component={AInput} placeholder="Введите на кого платеж" hasFeedback/>
       <Field label="Email получателя" name="receiverEmail" validate={[required, email]} component={AInput} placeholder="Введите email получателя" hasFeedback/>

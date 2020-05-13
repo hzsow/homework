@@ -15,7 +15,7 @@ export const DeleteProfileButton = () => {
           okText: 'Да',
           cancelText: 'Нет',
           onOk() {
-            if (accountsBalance === 0)
+            if (accountsBalance === "0.00")
                 dispatch(deleteUserProfileLoader());
               else
                 confirm({

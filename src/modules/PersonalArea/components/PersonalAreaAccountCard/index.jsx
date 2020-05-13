@@ -14,7 +14,7 @@ const { Text } = Typography;
 
 
 export default (props) => {
-    const { accounts, account, userId } = props;
+    const { accounts, account } = props;
     const loader = useSelector(currentAccountLoader);
     const balance = useSelector(currentAccountBalanceSelector);
 
@@ -25,22 +25,22 @@ export default (props) => {
             {
                 account && <div className="PersonalAreaAccountCard_content">
                 <div>
-                    <Text>Счет №: {account.account_number}</Text>
+                    <Text>Счет №: {account.accountNumber}</Text>
                     <Text type="secondary">Баланс: {balance}</Text>
                 </div>
                 <div>
                     <Space size='middle'>
-                        <ReplenishAccountButton balance={account.account_balance} uuid={account.id}/>
-                        <TransferButton balance={account.account_balance} id={account.id}/>
-                        <TransferEachOtherButton balance={account.account_balance} accounts={accounts}/>
-                        <PaymentButton balance={account.account_balance} id={account.id}/>
+                        <ReplenishAccountButton account={account}/>
+                        <TransferButton accountId={account.id} balance={account.accountBalance} currentAccount={account.accountNumber}/>
+                        <TransferEachOtherButton accountId={account.id} accounts={accounts}/>
+                        <PaymentButton accountId={account.id} balance={account.accountBalance} currentAccount={account.accountNumber} id={account.id}/>
                     </Space>
                 </div>
                 <div>
                     <Space size='large'>
                         <StatementButton account={account}/>
-                        <CreateTemplateButton id={account.id}/>
-                        <DeleteAccountButton uuid={account.id} userId={userId} balance={account.account_balance}/>
+                        <CreateTemplateButton accountNumber={account.accountNumber}/>
+                        <DeleteAccountButton uuid={account.id} balance={account.accountBalance}/>
                     </Space>
                 </div>
             </div>

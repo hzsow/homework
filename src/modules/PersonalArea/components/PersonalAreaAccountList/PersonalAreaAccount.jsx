@@ -8,7 +8,7 @@ import { checkAccountBalance } from '../../selectors/PersonalAreaSelectors';
 export default (props) => {
   const dispatch = useDispatch();
   const { data, index, currentId } = props;
-  const { account_balance, account_number, id } = data;
+  const { accountBalance, accountNumber, id } = data;
   const userId = localStorage.getItem('userId');
   const onClick = () => {
     dispatch(setCurrentAccount({value:index, userId}));
@@ -19,8 +19,8 @@ export default (props) => {
   });
 
   return (
-    <Card title={`Счет: ${account_number}`} className={accountClass} bordered={true} onClick={onClick}>
-      Баланс: {checkAccountBalance(account_balance)}
+    <Card title={`Счет: ${accountNumber}`} className={accountClass} bordered={true} onClick={onClick}>
+      Баланс: {checkAccountBalance(accountBalance)}
     </Card> 
   )
 }

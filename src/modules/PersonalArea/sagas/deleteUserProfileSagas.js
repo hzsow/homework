@@ -9,15 +9,16 @@ import {message} from 'antd';
 function* deleteUserProfileFlow() {
   try {
     const userId = localStorage.getItem('userId');
+    message.loading('Подождите', 0);
     yield call(deleteUserProfileRequest, userId);
     yield delay(500);
     yield put(deleteUserProfileSuccess());
+    message.destroy();
     message.success('Аккаунт удален!', 1.5)
     localStorage.removeItem('token');
     window.location.reload();
   } catch (error) {
     yield put(deleteUserProfileError(error));
-    message.error('Ошибка!', 2.5)
   }
 }
 

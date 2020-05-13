@@ -1,32 +1,28 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { transferAccountRequest, getAccountsRequest, replenishAccountRequest, getHistoryRequest, setHistoryRequest } from "./apiRequests";
+import { paymentAccountRequest } from "./apiRequests";
 import { PAYMENT_ACCOUNT_LOADER,
   paymentAccountSuccess,
   paymentAccountError,
-  historyObject,
+  isAccountsListTransferAccount,
   accountHistoryLoader
 } from "../actions";
 import {message} from 'antd';
 
 function* paymentAccountFlow(action) {
   try {
-    const { payload: {currentAccount, currentBalance, accountNumber, paymentValue, useTemplate} } = action;
-    const response = yield call(getAccountsRequest);
-    const value2 = response.data.find(element => element.account_number === parseInt(accountNumber)).account_balance + parseFloat(paymentValue);
-    yield call(transferAccountRequest, accountNumber, value2);
-    yield call(replenishAccountRequest, currentAccount, parseFloat(currentBalance)-parseFloat(paymentValue))
+    const { payload: {currentAccount, accountNumberReceiver, paymentValue, useTemplate, accountId} } = action;
+    const response = yield call(paymentAccountRequest, currentAccount, accountNumberReceiver, paymentValue, useTemplate);
     yield delay(500);
     yield put(paymentAccountSuccess());
-    const history = yield call(getHistoryRequest, currentAccount);
-    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data,  `${useTemplate ? `Платеж по шаблону`:`Платеж`} на счет ${accountNumber}` , parseFloat(paymentValue)));
-    const history2 = yield call(getHistoryRequest, accountNumber);
-    yield call(setHistoryRequest, accountNumber, historyObject(history2.data.data, `Зачисление со счета ${currentAccount}`, parseFloat(paymentValue)));
-    yield put(accountHistoryLoader(currentAccount));
+    yield put(isAccountsListTransferAccount({
+      current: response.data.current,
+      receiver: response.data.receiver,
+    }))
+    yield put(accountHistoryLoader(accountId));
     message.success('Платеж совершен', 1.5)
-   // window.location.reload();
   } catch (error) {
     yield put(paymentAccountError(error));
-    message.error('Ошибка!', 2.5)
+    message.error('Ошибка! Платеж не совершен.', 2.5)
   }
 }
 

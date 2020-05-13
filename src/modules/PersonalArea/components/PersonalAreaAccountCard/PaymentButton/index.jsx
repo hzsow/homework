@@ -7,7 +7,7 @@ import { paymentAccountLoader, paymentAccountModalHide, paymentAccountModalShow,
 import {reset} from 'redux-form';
 
 export const PaymentButton = (props) => {
-    const { balance, id} = props
+    const { balance, currentAccount, accountId} = props
     const [ useTemplate, setUseTemplate ] = useState(false);
     const dispatch = useDispatch();
     const visible = useSelector(paymentAccountModalShowSelector);
@@ -17,7 +17,7 @@ export const PaymentButton = (props) => {
         dispatch(reset('paymentForm'));
     }
     const onClick = () => {
-        dispatch(getTemplateLoader(id));
+        //dispatch(getTemplateLoader(id));
         dispatch(paymentAccountModalShow())
     }
     const handleSubmit = (values) => {
@@ -25,10 +25,10 @@ export const PaymentButton = (props) => {
             dispatch(paymentAccountLoader({
                 payload: {
                     ...values,
-                    currentAccount: id,
-                    currentBalance: balance,
-                    accountNumber: values.accountNumber.replace(/\s/g, ''),
-                    useTemplate
+                    currentAccount,
+                    accountNumberReceiver: typeof(values.accountNumberReceiver) == "string" ? values.accountNumberReceiver.replace(/\s/g, ''): values.accountNumberReceiver,
+                    useTemplate,
+                    accountId
                 }
             }));
             dispatch(reset('paymentForm'));

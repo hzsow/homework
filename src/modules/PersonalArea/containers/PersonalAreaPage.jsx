@@ -15,9 +15,8 @@ export const PersonalAreaPage = () => {
     const accounts = useSelector(accountsList);
     const user = useSelector(userSelector);
     const currentAccount = useSelector(currentAccountSelector);
-    const userId = localStorage.getItem('userId');
     // console.log(currentAccount)     
-    console.log(useSelector(state => state))
+    // console.log(useSelector(state => state))
     useEffect(() => {
         dispatch(getUser());
         dispatch(isAccountsListLoader());
@@ -26,14 +25,14 @@ export const PersonalAreaPage = () => {
     return(
         <Layout>
             <PersonalAreaHeader user={user}/>
-                { user.moderationLoader && <Spin/>}
-                { !user.moderationLoader && 
+                { 
+                    (user.moderationLoader || !user.status) ? <Spin/> : 
                     <Layout>
                         <Layout>
-                            <PersonalAreaAccountCard accounts={accounts} account={currentAccount} userId={userId}/>
+                            <PersonalAreaAccountCard accounts={accounts} account={currentAccount}/>
                             <PersonalAreaTransactions/>
                         </Layout>
-                        <PersonalAreaAccountList accounts={accounts} current={currentAccount} userId={userId}/>
+                        <PersonalAreaAccountList accounts={accounts} current={currentAccount}/>
                     </Layout>
                 }
         </Layout>

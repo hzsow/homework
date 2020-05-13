@@ -55,7 +55,7 @@ export default () => {
   
     return(
         <Content>
-          <Table columns={columns} pagination={{pageSize: 5, position: ["topCenter"]}} dataSource={data} loading={loaderHistory || loaderCurrentAccount} />
+          <Table columns={columns} rowKey={record => record.id} pagination={{pageSize: 5, position: ["topCenter"]}} dataSource={data} loading={loaderHistory || loaderCurrentAccount} />
           </Content>
     )
 }

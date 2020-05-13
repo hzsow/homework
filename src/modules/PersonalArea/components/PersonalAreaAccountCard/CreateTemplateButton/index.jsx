@@ -7,7 +7,7 @@ import { createTemplateLoader, createTemplateModalHide, createTemplateModalShow,
 import {reset} from 'redux-form';
 
 export const CreateTemplateButton = (props) => {
-    const { id } = props;
+    const { accountNumber } = props;
     const dispatch = useDispatch();
     const visible = useSelector(createTemplateModalShowSelector);
     const template = useSelector(templateSelector);
@@ -15,14 +15,15 @@ export const CreateTemplateButton = (props) => {
         dispatch(createTemplateModalHide());
     }
     const onClick = () => {
-        dispatch(getTemplateLoader(id));
+        dispatch(getTemplateLoader(accountNumber));
         dispatch(createTemplateModalShow())
     }
     const handleSubmit = (values) => {
         dispatch(createTemplateLoader({
             payload: {
                 ...values,
-                id 
+                accountNumberReceiver: typeof(values.accountNumberReceiver) == "string" ? values.accountNumberReceiver.replace(/\s/g, ''): values.accountNumberReceiver,
+                accountNumberCurrent: accountNumber 
             }
         }));
         dispatch(reset('paymentForm'));

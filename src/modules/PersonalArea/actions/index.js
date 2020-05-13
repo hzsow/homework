@@ -100,11 +100,10 @@ export const isAccountsListReplenishAccount = (value, uuid) => {
     uuid
   }
 }
-export const isAccountsListTransferAccount = (value, uuid) => {
+export const isAccountsListTransferAccount = payload => {
   return {
     type: ISACCOUNTSLIST_TRANSFER_ACCOUNT,
-    value,
-    uuid
+    payload
   }
 }
 export const isAccountsListDeleteAccount = (uuid) => {
@@ -178,13 +177,10 @@ export const replenishAccountError = () => {
     type: REPLENISH_ACCOUNT_ERROR,
   }
 }
-export const replenishAccountLoader = ({id, value, uuid, newBalance}) => {
+export const replenishAccountLoader = (payload) => {
   return {
     type: REPLENISH_ACCOUNT_LOADER,
-    id,
-    value,
-    uuid,
-    newBalance
+    payload
   }
 }
 export const replenishModalShow = () => {
@@ -207,7 +203,7 @@ export const transferAccountError = () => {
     type: TRANSFER_ACCOUNT_ERROR,
   }
 }
-export const transferAccountLoader = ({payload}) => {
+export const transferAccountLoader = (payload) => {
   return {
     type: TRANSFER_ACCOUNT_LOADER,
     payload
@@ -223,9 +219,10 @@ export const transferModalHide = () => {
     type: TRANSFER_ACCOUNT_MODAL_HIDE
   }
 }
-export const transferEachOtherAccountSuccess = () => {
+export const transferEachOtherAccountSuccess = payload => {
   return {
     type: TRANSFER_EACH_OTHER_ACCOUNT_SUCCESS,
+    payload
   }
 }
 export const transferEachOtherAccountError = () => {

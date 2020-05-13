@@ -90,13 +90,14 @@ export const getUser = () => {
     type: GET_USER,
   }
 }
-export const getUserSuccess = ({email, first, isClient, img}) => {
+export const getUserSuccess = ({email, firstName, isClient, profilePicture, status}) => {
   return { 
     type: GET_USER_SUCCESS, 
     email,
-    firstName: first,
+    firstName,
     isModerated: isClient,
-    img
+    img: profilePicture,
+    status
   }
 }
 export const getUserError = () => {

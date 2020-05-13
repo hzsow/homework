@@ -1,12 +1,12 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {Button, Modal, message} from 'antd';
+import {Button, Modal} from 'antd';
 import { deleteAccountLoader } from '../../actions';
 
 const { confirm } = Modal;
 
 export const DeleteAccountButton = (props) => {
-    const {uuid, userId, balance} = props;
+    const {uuid, balance} = props;
     const dispatch = useDispatch();
     const showConfirm = () => {
         confirm({
@@ -15,14 +15,14 @@ export const DeleteAccountButton = (props) => {
           cancelText: 'Нет',
           onOk() {
             if (balance === 0){
-              dispatch(deleteAccountLoader({uuid, userId}));
+              dispatch(deleteAccountLoader({uuid}));
             }else{
               confirm({
                 title: "Остались средства на счету.",
                 okText: 'Закрыть счет',
                 cancelText: 'Отмена',
                 onOk(){
-                  dispatch(deleteAccountLoader({uuid, userId}));
+                  dispatch(deleteAccountLoader({uuid}));
                 }
               })
             }

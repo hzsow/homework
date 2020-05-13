@@ -13,16 +13,16 @@ import {message} from 'antd';
 function* createTemplateFlow(action) {
   try {
     const { payload } = action;
-    const { payload: {accountNumber, paymentName, paymentPurpose, paymentValue, receiverEmail, receiverName, id} } = action;
-    yield call(getTemplateRequest, id);
+    const { payload: { accountNumberCurrent, id } } = action;
+    console.log(action);
+    yield call(getTemplateRequest, accountNumberCurrent);
     yield call(changeTemplateRequest, id, payload);
     message.success('Шаблон успешно изменен', 1.5);
     yield put(createTemplateSuccess());
   } catch (error) {
     try {
       const { payload } = action;
-      const { id } = payload;
-      yield call(createTemplateRequest, id, payload);
+      yield call(createTemplateRequest, payload);
       yield delay(500);
       message.success('Шаблон успешно создан', 1.5);
       yield put(createTemplateSuccess());
@@ -37,6 +37,7 @@ function* getTemplateFlow(action) {
   try {
     const { id } = action;
     const response = yield call(getTemplateRequest, id);
+    console.log(response)
     yield put(getTemplateSuccess(response.data));
   } catch (error) {
     yield put(getTemplateError());

@@ -25,8 +25,9 @@ export const StatementButton = (props) => {
                     visible={visible}
                     footer={[]}
                     >
-                        <Text className="StatementButtonModal__text">Счет №: {account.id}</Text>
+                        <Text className="StatementButtonModal__text">Счет №: {account.accountNumber}</Text>
                         <Text type="secondary" className="StatementButtonModal__text">Баланс: {balance}</Text>
+                        <Text type="secondary" className="StatementButtonModal__text">Счет открыт: {account.dateCreated}</Text>
                         <PersonalAreaTransactions/>
                 </Modal>
             </>

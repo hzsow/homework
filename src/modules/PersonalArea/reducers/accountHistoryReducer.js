@@ -10,7 +10,6 @@ let initialState = {
 };
 
 export default (state = initialState, action) => {
-    console.log(action)
     return produce(state, draft => {
         if (action.type === ACCOUNT_HISTORY_LOADER){
             draft.loader = true;

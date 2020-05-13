@@ -8,20 +8,23 @@ import {reset} from 'redux-form';
 
 
 export const TransferEachOtherButton = (props) => {
-    const { accounts } = props;
+    const { accounts, accountId } = props;
     const dispatch = useDispatch();
     const visible = useSelector(transferEachOtherAccountModalShowSelector);
     const loader = useSelector(transferEachOtherAccountLoaderSelector);
     const checkAccount = (current, value) => {
-        const currentAcc = accounts.find((el) => el.account_number === current);
-        if (currentAcc && currentAcc.account_balance >= value)
+        const currentAcc = accounts.find((el) => el.accountNumber === current);
+        if (currentAcc && currentAcc.accountBalance >= value)
                 return true; 
         return false;
     }
     const handleOk = (values) => {
         if (checkAccount(values.currentAccount, values.value))
             {dispatch(transferEachOtherAccountLoader({
-                payload: values
+                payload: {
+                    ...values,
+                    accountId
+                }
             }));
             dispatch(reset('transferForm'));
         }

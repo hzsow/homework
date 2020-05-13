@@ -1,30 +1,25 @@
 import { call, put, takeEvery, delay } from "redux-saga/effects";
-import { replenishAccountRequest, getAccountsRequest, getHistoryRequest, setHistoryRequest } from "./apiRequests";
+import { transferAccountRequest } from "./apiRequests";
 import { TRANSFER_EACH_OTHER_ACCOUNT_LOADER,
   transferEachOtherAccountSuccess,
   transferEachOtherAccountError,
-  historyObject,
+  isAccountsListTransferAccount,
   accountHistoryLoader
 } from "../actions";
 import {message} from 'antd';
 
 function* transferEachOtherAccountFlow(action) {
   try {
-    const { payload: { currentAccount, receiverAccount, value }} = action;
-    const response = yield call(getAccountsRequest);
-    const valueCurrent = response.data.find(element => element.account_number === parseInt(currentAccount)).account_balance - parseFloat(value);
-    const valueReceiver = response.data.find(element => element.account_number === parseInt(receiverAccount)).account_balance + parseFloat(value);
-    yield call(replenishAccountRequest, currentAccount, valueCurrent)
-    yield call(replenishAccountRequest, receiverAccount, valueReceiver)
+    const { payload: { currentAccount, receiverAccount, value, accountId }} = action;
+    const response = yield call(transferAccountRequest, currentAccount, receiverAccount, value);
     yield delay(500);
     yield put(transferEachOtherAccountSuccess());
-    const history = yield call(getHistoryRequest, currentAccount);
-    yield call(setHistoryRequest, currentAccount, historyObject(history.data.data, `Перевод на свой счет ${receiverAccount}`, parseFloat(value)));
-    const history2 = yield call(getHistoryRequest, receiverAccount);
-    yield call(setHistoryRequest, receiverAccount, historyObject(history2.data.data, `Зачисление со своего счета ${currentAccount}`, parseFloat(value)));
-    yield put(accountHistoryLoader(currentAccount));
+    yield put(isAccountsListTransferAccount({
+      current: response.data.current,
+      receiver: response.data.receiver,
+    }))
+    yield put(accountHistoryLoader(accountId));
     message.success('Перевод прошел успешно', 1.5)
-    // window.location.reload();
   } catch (error) {
     yield put(transferEachOtherAccountError(error));
     message.error('Ошибка!', 2.5)

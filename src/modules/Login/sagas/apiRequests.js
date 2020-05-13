@@ -1,29 +1,25 @@
 import axios from 'axios';
 
-export const loginApiRequest = (email, password) => {
-    return axios.post("http://localhost:3051/login", 
+export const loginApiRequest = (Email, Password) => {
+    return axios.post("/login", 
     {
-        email,
-        password
+        Email,
+        Password
     })
 }
-export const signupApiRequest = (email, first, password) => {
-    return axios.post("http://localhost:3051/register", 
+export const signupApiRequest = (Email, FirstName, Password) => {
+    return axios.post("/register", 
     {
-        email,
-        password,
-        first,
-        isClient: false,
-        img: null
+        Email,
+        Password,
+        FirstName
     })
 }
 export const getUserApiRequest = (userId) => {
-    return axios.get(`http://localhost:3051/users/${userId}`) 
+    return axios.get(`/getUser/${userId}`) 
 }
 export const setUserModeratedApiRequest = (userId) => {
-    return axios.patch(`http://localhost:3051/users/${userId}`,{
-        isClient: true
-    }) 
+    return axios.get(`/makeClient/${userId}`)
 }
 
 

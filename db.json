@@ -20,44 +20,44 @@
   "accounts": [
     {
       "userId": "1",
-      "account_balance": 26414814,
-      "account_number": 4435038211,
+      "accountBalance": 26414814,
+      "accountNumber": 4435038211,
       "id": 4435038211
     },
     {
       "userId": "1",
-      "account_balance": 13388550.89,
-      "account_number": 4626827578,
+      "accountBalance": 13388550.89,
+      "accountNumber": 4626827578,
       "id": 4626827578
     },
     {
       "userId": "1",
-      "account_balance": 6865,
-      "account_number": 4842312277,
+      "accountBalance": 6865,
+      "accountNumber": 4842312277,
       "id": 4842312277
     },
     {
       "userId": "1",
-      "account_balance": 600.45,
-      "account_number": 4353359529,
+      "accountBalance": 600.45,
+      "accountNumber": 4353359529,
       "id": 4353359529
     },
     {
       "userId": "1",
-      "account_balance": 0,
-      "account_number": 4186923514,
+      "accountBalance": 0,
+      "accountNumber": 4186923514,
       "id": 4186923514
     },
     {
       "userId": "2",
-      "account_balance": 100,
-      "account_number": 4515752407,
+      "accountBalance": 100,
+      "accountNumber": 4515752407,
       "id": 4515752407
     },
     {
       "userId": "2",
-      "account_balance": 50000.5,
-      "account_number": 4279446328,
+      "accountBalance": 50000.5,
+      "accountNumber": 4279446328,
       "id": 4279446328
     }
   ],

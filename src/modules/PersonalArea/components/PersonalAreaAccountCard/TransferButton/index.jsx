@@ -7,19 +7,18 @@ import { transferModalHide, transferModalShow, transferAccountLoader } from '../
 import {reset} from 'redux-form';
 
 export const TransferButton = (props) => {
-    const { balance, id } = props;
+    const { balance, currentAccount, accountId } = props;
     const dispatch = useDispatch();
     const visible = useSelector(transferAccountModalShow);
     const loader = useSelector(transferAccountLoaderSelector);
     const handleOk = (values) => {
         if (balance >= parseFloat(values.accountValueField))
             {dispatch(transferAccountLoader({
-                payload: {
                     value: values.accountValueField, 
                     accountNumber: values.accountNumberField.replace(/\s/g, ''),
-                    currentAccount: id,
-                    currentAccountValue: balance
-                }
+                    currentAccount,
+                    currentAccountValue: balance,
+                    accountId
             }));
             dispatch(reset('transferForm'));
         }

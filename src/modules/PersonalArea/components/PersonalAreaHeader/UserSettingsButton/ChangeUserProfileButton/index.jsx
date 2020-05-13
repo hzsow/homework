@@ -25,7 +25,7 @@ export const ChangeUserProfileButton = (props) => {
           dispatch(changeUserProfileLoader({payload:{
             ...values,
             oldEmail: email,
-            imageUrl
+            fileName: imageUrl
           }}));
           dispatch(reset('changeUserProfile'));
       }
@@ -58,9 +58,10 @@ export const ChangeUserProfileButton = (props) => {
         return;
       }
       if (info.file.status === 'done') {
-        getBase64(info.file.originFileObj, imageUrl =>{
+        console.log(info)
+          getBase64(info.file.originFileObj, imageUrl =>{
             setLoading(false);
-            setImageUrl(`${info.file.name}`);
+            setImageUrl(info.file.response.fileName)
             setImageCode(imageUrl);
           }
         );
@@ -88,14 +89,14 @@ export const ChangeUserProfileButton = (props) => {
                 ]}
                 >
                 <Upload
-                    name="file"
+                    name="ProfileImage"
                     listType="picture-card"
                     className="avatar-uploader"
                     showUploadList={false}
                     multiple={false}
                     accept="image/jpeg,image/png"
-                    action="http://localhost:8000/upload"
                     beforeUpload={beforeUpload}
+                    action="uploadImage"
                     onChange={handleChange}
                   >
                      {imageCode ? <img src={imageCode} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
